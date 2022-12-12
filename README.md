@@ -5,7 +5,7 @@
 
 ### Project description
 
-*Your description here*
+Die Arbeitslosigkeit ist ein Indikator für die Situation auf dem Arbeitsmarkt. Die Zahl der Erwerbslosen gibt Auskunft über die Arbeitslosigkeit und ist nicht nur deutschlandweit von Interesse. Im Rahmen dieses Projektes soll untersucht werden, mit welchen soziodemographischen Merkmalen die Erwerbslosigkeit beziehungsweise Erwerbstätigkeit in Deutschland assoziiert. Im Rahmen dieses Projekt verwenden wir die Arbeitslosenquote als Synonym für die Erwerbslosenquote.
 
 
 ---
