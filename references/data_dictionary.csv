@@ -1,224 +1,224 @@
 ,Name,Description,Role,Type,Format
-0,AGS_12,12-stelliger Amtlicher Gemeindeschlüssel (AGS),ID,nominal,object
-1,RS_Land,Bundesland,ID,nominal,int64
-2,RS_RB_NUTS2,Regierungsbezirk/ Ebene NUTS-2,ID,nominal,float64
-3,RS_Kreis,Kreisfreie Stadt/Stadtkreis/Landkreis,ID,nominal,float64
-4,RS_VB,Gemeinde-verband,ID,nominal,float64
-5,RS_Gem,Gemeinde,ID,nominal,float64
-6,Name,Gebiet,ID,nominal,object
-7,Reg_Hier,Regional-ebene,ID,ordinal,object
-8,AEWZ,Einwohnerzahl zum 09. Mai 2011,predictor,numeric,int64
-9,DEM_1.1,Bevölkerung nach Geschlecht insgesamt,predictor,numeric,int64
-10,DEM_1.2,Bevölkerung nach Geschlecht Geschlecht männlich,predictor,numeric,object
-11,DEM_1.3,Bevölkerung nach Geschlecht Geschlecht weiblich,predictor,numeric,object
-12,DEM_2.1,Bevölkerung nach Familienstand (ausführlich) und Geschlecht insgesamt,predictor,numeric,int64
-13,DEM_2.2,Bevölkerung nach Familienstand (ausführlich) und Geschlecht männlich,predictor,numeric,object
-14,DEM_2.3,Bevölkerung nach Familienstand (ausführlich) und Geschlecht weiblich,predictor,numeric,object
-15,DEM_2.4,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ledig zusammen,predictor,numeric,object
-16,DEM_2.5,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ledig männlich,predictor,numeric,object
-17,DEM_2.6,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ledig weiblich,predictor,numeric,object
-18,DEM_2.7,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verheiratet zusammen,predictor,numeric,object
-19,DEM_2.8,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verheiratet männlich,predictor,numeric,object
-20,DEM_2.9,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verheiratet weiblich,predictor,numeric,object
-21,DEM_2.10,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verwitwet zusammen,predictor,numeric,object
-22,DEM_2.11,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verwitwet männlich,predictor,numeric,object
-23,DEM_2.12,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verwitwet weiblich,predictor,numeric,object
-24,DEM_2.13,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Geschieden zusammen,predictor,numeric,object
-25,DEM_2.14,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Geschieden männlich,predictor,numeric,object
-26,DEM_2.15,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Geschieden weiblich,predictor,numeric,object
-27,DEM_2.16,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft zusammen,predictor,numeric,object
-28,DEM_2.17,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft männlich,predictor,numeric,object
-29,DEM_2.18,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft weiblich,predictor,numeric,object
-30,DEM_2.19,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartner/-in verstorben zusammen,predictor,numeric,object
-31,DEM_2.20,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartner/-in verstorben männlich,predictor,numeric,object
-32,DEM_2.21,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartner/-in verstorben weiblich,predictor,numeric,object
-33,DEM_2.22,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft aufgehoben zusammen,predictor,numeric,object
-34,DEM_2.23,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft aufgehoben männlich,predictor,numeric,object
-35,DEM_2.24,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft aufgehoben weiblich,predictor,numeric,object
-36,DEM_2.25,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ohne Angabe zusammen,predictor,numeric,object
-37,DEM_2.26,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ohne Angabe männlich,predictor,numeric,object
-38,DEM_2.27,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ohne Angabe weiblich,predictor,numeric,object
-39,DEM_3.1,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht insgesamt,predictor,numeric,int64
-40,DEM_3.2,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht männlich,predictor,numeric,object
-41,DEM_3.3,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht weiblich,predictor,numeric,object
-42,DEM_3.4,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht unter 10 zusammen,predictor,numeric,object
-43,DEM_3.5,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht unter 10 männlich,predictor,numeric,object
-44,DEM_3.6,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht unter 10 weiblich,predictor,numeric,object
-45,DEM_3.7,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 10-19 zusammen,predictor,numeric,object
-46,DEM_3.8,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 10-19 weiblich,predictor,numeric,object
-47,DEM_3.9,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 10-19 männlich,predictor,numeric,object
-48,DEM_3.10,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 20-29 zusammen,predictor,numeric,object
-49,DEM_3.11,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 20-30 männlich,predictor,numeric,object
-50,DEM_3.12,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 20-31 weiblich,predictor,numeric,object
-51,DEM_3.13,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 30-39 zusammen,predictor,numeric,object
-52,DEM_3.14,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 30-40 männlich,predictor,numeric,object
-53,DEM_3.15,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 30-41 weiblich,predictor,numeric,object
-54,DEM_3.16,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 40-49 zusammen,predictor,numeric,object
-55,DEM_3.17,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 40-50 männlich,predictor,numeric,object
-56,DEM_3.18,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 40-51 weiblich,predictor,numeric,object
-57,DEM_3.19,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 50-59 zusammen,predictor,numeric,object
-58,DEM_3.20,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 50-60 männlich,predictor,numeric,object
-59,DEM_3.21,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 50-61 weiblich,predictor,numeric,object
-60,DEM_3.22,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 60-69 zusammen,predictor,numeric,object
-61,DEM_3.23,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 60-70 männlich,predictor,numeric,object
-62,DEM_3.24,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 60-71 weiblich,predictor,numeric,object
-63,DEM_3.25,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 70-79 zusammen,predictor,numeric,object
-64,DEM_3.26,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 70-80 männlich,predictor,numeric,object
-65,DEM_3.27,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 70-81 weiblich,predictor,numeric,object
-66,DEM_3.28,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 80 und älter zusammen,predictor,numeric,object
-67,DEM_3.29,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 80 und älter männlich,predictor,numeric,object
-68,DEM_3.30,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 80 und älter weiblich,predictor,numeric,object
-69,DEM_4.1,Bevölkerung nach 11 Altersklassen und Geschlecht insgesamt,predictor,numeric,int64
-70,DEM_4.2,Bevölkerung nach 11 Altersklassen und Geschlecht männlich,predictor,numeric,object
-71,DEM_4.3,Bevölkerung nach 11 Altersklassen und Geschlecht weiblich,predictor,numeric,object
-72,DEM_4.4,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht unter 3 Jahre zusammen,predictor,numeric,object
-73,DEM_4.5,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht unter 3 Jahre männlich,predictor,numeric,object
-74,DEM_4.6,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht unter 3 Jahre weiblich,predictor,numeric,object
-75,DEM_4.7,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 3-5 Jahre zusammen,predictor,numeric,object
-76,DEM_4.8,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 3-5 Jahre weiblich,predictor,numeric,object
-77,DEM_4.9,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 3-5 Jahre männlich,predictor,numeric,object
-78,DEM_4.10,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 6-14 Jahre zusammen,predictor,numeric,object
-79,DEM_4.11,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 6-14 Jahre männlich,predictor,numeric,object
-80,DEM_4.12,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 6-14 Jahre weiblich,predictor,numeric,object
-81,DEM_4.13,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 15-17 Jahre zusammen,predictor,numeric,object
-82,DEM_4.14,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 15-17 Jahre männlich,predictor,numeric,object
-83,DEM_4.15,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 15-17 Jahre weiblich,predictor,numeric,object
-84,DEM_4.16,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 18-24 Jahre zusammen,predictor,numeric,object
-85,DEM_4.17,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 18-24 Jahre männlich,predictor,numeric,object
-86,DEM_4.18,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 18-24 Jahre weiblich,predictor,numeric,object
-87,DEM_4.19,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 25-29 Jahre zusammen,predictor,numeric,object
-88,DEM_4.20,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 25-29 Jahre männlich,predictor,numeric,object
-89,DEM_4.21,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 25-29 Jahre weiblich,predictor,numeric,object
-90,DEM_4.22,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 30-39 Jahre zusammen,predictor,numeric,object
-91,DEM_4.23,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 30-39 Jahre männlich,predictor,numeric,object
-92,DEM_4.24,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 30-39 Jahre weiblich,predictor,numeric,object
-93,DEM_4.25,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 40-49 Jahre zusammen,predictor,numeric,object
-94,DEM_4.26,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 40-49 Jahre männlich,predictor,numeric,object
-95,DEM_4.27,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 40-49 Jahre weiblich,predictor,numeric,object
-96,DEM_4.28,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 50-64 Jahre zusammen,predictor,numeric,object
-97,DEM_4.29,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 50-64 Jahre männlich,predictor,numeric,object
-98,DEM_4.30,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 50-64 Jahre weiblich,predictor,numeric,object
-99,DEM_4.31,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 65-74 Jahre zusammen,predictor,numeric,object
-100,DEM_4.32,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 65-74 Jahre männlich,predictor,numeric,object
-101,DEM_4.33,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 65-74 Jahre weiblich,predictor,numeric,object
-102,DEM_4.34,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 75 Jahre und älter zusammen,predictor,numeric,object
-103,DEM_4.35,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 75 Jahre und älter männlich,predictor,numeric,object
-104,DEM_4.36,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 75 Jahre und älter weiblich,predictor,numeric,object
-105,DEM_5.1,Bevölkerung nach Staatsangehörigkeitsgruppen insgesamt,predictor,numeric,int64
-106,DEM_5.2,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Deutschland,predictor,numeric,object
-107,DEM_5.3,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland zusammen,predictor,numeric,object
-108,DEM_5.4,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon EU27-Land,predictor,numeric,object
-109,DEM_5.5,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon Sonstiges Europa,predictor,numeric,object
-110,DEM_5.6,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon Sonstige Welt,predictor,numeric,object
-111,DEM_5.7,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon Sonstige,predictor,numeric,object
-112,DEM_6.1,Bevölkerung nach Geburtsland (Gruppen) insgesamt,predictor,numeric,int64
-113,DEM_6.2,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Deutschland,predictor,numeric,object
-114,DEM_6.3,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland zusammen,predictor,numeric,object
-115,DEM_6.4,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon EU27-Land,predictor,numeric,object
-116,DEM_6.5,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon Sonstiges Europa,predictor,numeric,object
-117,DEM_6.6,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon Sonstige Welt,predictor,numeric,object
-118,DEM_6.7,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon Sonstige,predictor,numeric,object
-119,REL_1.1,Bevölkerung nach Religion Insgesamt,predictor,numeric,int64
-120,REL_1.2,Bevölkerung nach Religion Religion Römisch-katholische Kirche (öffentlich-rechtlich),predictor,numeric,object
-121,REL_1.3,Bevölkerung nach Religion Religion Evangelische Kirche (öffentlich-rechtlich),predictor,numeric,object
-122,REL_1.4,"Bevölkerung nach Religion Religion Sonstige, keine, ohne Angabe",predictor,numeric,object
-123,MIG_1.1,Bevölkerung nach Migrationshintergrund und -erfahrung Insgesamt,predictor,numeric,float64
-124,MIG_1.2,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen ohne Migrationshintergrund,predictor,numeric,float64
-125,MIG_1.3,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung zusammen,predictor,numeric,object
-126,MIG_1.4,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Ausländer/-innen zusammen,predictor,numeric,object
-127,MIG_1.5,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Ausländer/-innen mit eigener Migrationserfahrung,predictor,numeric,object
-128,MIG_1.6,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Ausländer/-innen ohne eigene Migrationserfahrung,predictor,numeric,object
-129,MIG_1.7,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund zusammen,predictor,numeric,object
-130,MIG_1.8,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund mit eigener Migrationserfahrung,predictor,numeric,object
-131,MIG_1.9,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund ohne eigene Migrationserfahrung,predictor,numeric,object
-132,MIG_1.10,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund davon mit beidseitigem Migrationshintergrund,predictor,numeric,object
-133,MIG_1.11,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund davon mit einseitigem Migrationshintergrund,predictor,numeric,object
-134,MIG_2.1,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Insgesamt,predictor,numeric,object
-135,MIG_2.2,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1956 - 1959,predictor,numeric,object
-136,MIG_2.3,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1960 - 1969,predictor,numeric,object
-137,MIG_2.4,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1970 - 1979,predictor,numeric,object
-138,MIG_2.5,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1980 - 1989,predictor,numeric,object
-139,MIG_2.6,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1990 - 1999,predictor,numeric,object
-140,MIG_2.7,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 2000 - 2011,predictor,numeric,object
-141,MIG_2.8,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt Unbekannt,predictor,numeric,object
-142,MIG_3.1,Bevölkerung mit Migrationshintergrund nach Regionen Insgesamt,predictor,numeric,object
-143,MIG_3.2,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen EU27-Land,predictor,numeric,object
-144,MIG_3.3,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen Sonstiges Europa,predictor,numeric,object
-145,MIG_3.4,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen Sonstige Welt,predictor,numeric,object
-146,MIG_3.5,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen Unbekanntes Ausland,predictor,numeric,object
-147,ERW_1.1,Bevölkerung nach Erwerbsstatus und Geschlecht Insgesamt,response,numeric,float64
-148,ERW_1.2,Bevölkerung nach Erwerbsstatus und Geschlecht männlich,response,numeric,float64
-149,ERW_1.3,Bevölkerung nach Erwerbsstatus und Geschlecht weiblich,response,numeric,float64
-150,ERW_1.4,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen zusammen,response,numeric,float64
-151,ERW_1.5,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen männlich,response,numeric,float64
-152,ERW_1.6,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen weiblich,response,numeric,float64
-153,ERW_1.7,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbstätige zusammen,response,numeric,float64
-154,ERW_1.8,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbstätige männlich,response,numeric,float64
-155,ERW_1.9,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbstätige weiblich,response,numeric,float64
-156,ERW_1.10,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbslose zusammen,response,numeric,object
-157,ERW_1.11,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbslose männlich,response,numeric,object
-158,ERW_1.12,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbslose weiblich,response,numeric,object
-159,ERW_1.13,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Nichterwerbspersonen zusammen,response,numeric,float64
-160,ERW_1.14,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Nichterwerbspersonen männlich,response,numeric,float64
-161,ERW_1.15,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Nichterwerbspersonen weiblich,response,numeric,float64
-162,ERW_2.1,Erwerbstätige nach Stellung im Beruf Insgesamt,Informational,numeric,float64
-163,ERW_2.2,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Angestellte/Arbeiter/-innen,Informational,numeric,float64
-164,ERW_2.3,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Beamte/-innen,Informational,numeric,object
-165,ERW_2.4,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Selbstständige mit Beschäftigten,Informational,numeric,object
-166,ERW_2.5,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Selbstständige ohne Beschäftigte,Informational,numeric,object
-167,ERW_2.6,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Mithelfende Familienangehörige,Informational,numeric,object
-168,ERW_3.1,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Insgesamt,Informational,numeric,float64
-169,ERW_3.2,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Führungskräfte,Informational,numeric,object
-170,ERW_3.3,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Akademische Berufe,Informational,numeric,float64
-171,ERW_3.4,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Techniker und gleichrangige nichttechnische Berufe,Informational,numeric,float64
-172,ERW_3.5,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Bürokräfte und verwandte Berufe,Informational,numeric,float64
-173,ERW_3.6,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Dienstleistungsberufe und Verkäufer,Informational,numeric,float64
-174,ERW_3.7,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Fachkräfte in Land-/Forstwirtschaft und Fischerei,Informational,numeric,object
-175,ERW_3.8,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Handwerks- und verwandte Berufe,Informational,numeric,float64
-176,ERW_3.9,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Bediener von Anlagen/Maschinen und Montageberufe,Informational,numeric,object
-177,ERW_3.10,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Hilfsarbeitskräfte,Informational,numeric,object
-178,ERW_3.11,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Angehörige der regulären Streitkräfte,Informational,numeric,object
-179,ERW_4.1,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Insgesamt,Informational,numeric,float64
-180,ERW_4.2,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Land-/Forstwirtschaft, Fischerei",Informational,numeric,object
-181,ERW_4.3,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Produzierendes Gewerbe,Informational,numeric,object
-182,ERW_4.4,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Bergbau und Verarbeitendes Gewerbe,Informational,numeric,object
-183,ERW_4.5,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Energie-/ Wasserversorgung, Abfallentsorgung",Informational,numeric,object
-184,ERW_4.6,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Baugewerbe,Informational,numeric,object
-185,ERW_4.7,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Handel, Gastgewerbe und Verkehr; IuK",Informational,numeric,object
-186,ERW_4.8,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Handel, Reparatur von KFZ, Gastgewerbe",Informational,numeric,object
-187,ERW_4.9,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon   Verkehr und Lagerei, Kommunikation",Informational,numeric,object
-188,ERW_4.10,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Sonstige Dienstleistungen,Informational,numeric,float64
-189,ERW_4.11,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Finanz- und Versicherungsdienstleistungen,Informational,numeric,object
-190,ERW_4.12,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Grundstücks-/Wohnungswesen, wirtschaftl. Dienstl.",Informational,numeric,object
-191,ERW_4.13,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Öffentliche Verwaltung u.ä.,Informational,numeric,object
-192,ERW_4.14,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Öfftl. und priv. Dienstl. (ohne öfftl. Verwaltung),Informational,numeric,object
-193,ERW_4.15,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche unbekannt,Informational,numeric,object
-194,BIL_2.1,Personen in schulischer Ausbildung nach Klassenstufen Insgesamt,predictor,numeric,float64
-195,BIL_2.2,Personen in schulischer Ausbildung nach Klassenstufen Klassenstufen Klasse 1 bis 4,predictor,numeric,float64
-196,BIL_2.3,Personen in schulischer Ausbildung nach Klassenstufen Klassenstufen Klasse 5 bis 9 bzw. 10 (Sekundarstufe I),predictor,numeric,float64
-197,BIL_2.4,Personen in schulischer Ausbildung nach Klassenstufen Klassenstufen Klasse 11 bis 13 (Gymnasiale Oberstufe),predictor,numeric,object
-198,BIL_3.1,Personen in schulischer Ausbildung nach Schulform Insgesamt,predictor,numeric,float64
-199,BIL_3.2,Personen in schulischer Ausbildung nach Schulform Schulform Grundschule,predictor,numeric,float64
-200,BIL_3.3,Personen in schulischer Ausbildung nach Schulform Schulform Hauptschule,predictor,numeric,object
-201,BIL_3.4,Personen in schulischer Ausbildung nach Schulform Schulform Realschule,predictor,numeric,object
-202,BIL_3.5,Personen in schulischer Ausbildung nach Schulform Schulform Gymnasium,predictor,numeric,object
-203,BIL_3.6,Personen in schulischer Ausbildung nach Schulform Schulform Gesamtschule,predictor,numeric,object
-204,BIL_3.7,Personen in schulischer Ausbildung nach Schulform Schulform Sonstige Schule,predictor,numeric,object
-205,BIL_4.1,Personen ab 15 Jahren nach höchstem schulischen Abschluss Insgesamt,predictor,numeric,float64
-206,BIL_4.2,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Ohne oder noch kein Schulabschluss,predictor,numeric,float64
-207,BIL_4.3,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Ohne Schulabschluss,predictor,numeric,object
-208,BIL_4.4,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Noch in schulischer Ausbildung,predictor,numeric,object
-209,BIL_4.5,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Haupt-/ Volksschulabschluss,predictor,numeric,float64
-210,BIL_4.6,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Mittlerer Schulabschluss und gymnasiale Oberstufe,predictor,numeric,float64
-211,BIL_4.7,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Realschul- oder gleichwertiger Abschluss,predictor,numeric,float64
-212,BIL_4.8,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Schüler/-innen der gymnasialen Oberstufe,predictor,numeric,object
-213,BIL_4.9,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Fachhochschulreife,predictor,numeric,float64
-214,BIL_4.10,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Allg./fachgebundene Hochschulreife (Abitur),predictor,numeric,float64
-215,BIL_5.1,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Insgesamt,predictor,numeric,float64
-216,BIL_5.2,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Ohne beruflichen Abschluss,predictor,numeric,float64
-217,BIL_5.3,"Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Lehre, Berufsausbildung im dualen System",predictor,numeric,float64
-218,BIL_5.4,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Fachschulabschluss,predictor,numeric,float64
-219,BIL_5.5,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Abschluss einer Fachakademie oder Berufsakademie,predictor,numeric,object
-220,BIL_5.6,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Fachhochschulabschluss,predictor,numeric,float64
-221,BIL_5.7,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Hochschulabschluss,predictor,numeric,object
-222,BIL_5.8,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Promotion,predictor,numeric,object
+0,AGS_12,12-stelliger Amtlicher Gemeindeschlüssel (AGS),ID,nominal,
+1,RS_Land,Bundesland,ID,nominal,
+2,RS_RB_NUTS2,Regierungsbezirk/ Ebene NUTS-2,ID,nominal,
+3,RS_Kreis,Kreisfreie Stadt/Stadtkreis/Landkreis,ID,nominal,
+4,RS_VB,Gemeinde-verband,ID,nominal,
+5,RS_Gem,Gemeinde,ID,nominal,
+6,Name,Gebiet,ID,nominal,
+7,Reg_Hier,Regional-ebene,ID,ordinal,
+8,AEWZ,Einwohnerzahl zum 09. Mai 2011,predictor,numeric,
+9,DEM_1.1,Bevölkerung nach Geschlecht insgesamt,predictor,numeric,
+10,DEM_1.2,Bevölkerung nach Geschlecht Geschlecht männlich,predictor,numeric,
+11,DEM_1.3,Bevölkerung nach Geschlecht Geschlecht weiblich,predictor,numeric,
+12,DEM_2.1,Bevölkerung nach Familienstand (ausführlich) und Geschlecht insgesamt,predictor,numeric,
+13,DEM_2.2,Bevölkerung nach Familienstand (ausführlich) und Geschlecht männlich,predictor,numeric,
+14,DEM_2.3,Bevölkerung nach Familienstand (ausführlich) und Geschlecht weiblich,predictor,numeric,
+15,DEM_2.4,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ledig zusammen,predictor,numeric,
+16,DEM_2.5,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ledig männlich,predictor,numeric,
+17,DEM_2.6,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ledig weiblich,predictor,numeric,
+18,DEM_2.7,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verheiratet zusammen,predictor,numeric,
+19,DEM_2.8,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verheiratet männlich,predictor,numeric,
+20,DEM_2.9,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verheiratet weiblich,predictor,numeric,
+21,DEM_2.10,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verwitwet zusammen,predictor,numeric,
+22,DEM_2.11,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verwitwet männlich,predictor,numeric,
+23,DEM_2.12,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Verwitwet weiblich,predictor,numeric,
+24,DEM_2.13,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Geschieden zusammen,predictor,numeric,
+25,DEM_2.14,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Geschieden männlich,predictor,numeric,
+26,DEM_2.15,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Geschieden weiblich,predictor,numeric,
+27,DEM_2.16,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft zusammen,predictor,numeric,
+28,DEM_2.17,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft männlich,predictor,numeric,
+29,DEM_2.18,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft weiblich,predictor,numeric,
+30,DEM_2.19,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartner/-in verstorben zusammen,predictor,numeric,
+31,DEM_2.20,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartner/-in verstorben männlich,predictor,numeric,
+32,DEM_2.21,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartner/-in verstorben weiblich,predictor,numeric,
+33,DEM_2.22,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft aufgehoben zusammen,predictor,numeric,
+34,DEM_2.23,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft aufgehoben männlich,predictor,numeric,
+35,DEM_2.24,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Eingetr. Lebenspartnerschaft aufgehoben weiblich,predictor,numeric,
+36,DEM_2.25,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ohne Angabe zusammen,predictor,numeric,
+37,DEM_2.26,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ohne Angabe männlich,predictor,numeric,
+38,DEM_2.27,Bevölkerung nach Familienstand (ausführlich) und Geschlecht Familienstand und Geschlecht Ohne Angabe weiblich,predictor,numeric,
+39,DEM_3.1,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht insgesamt,predictor,numeric,
+40,DEM_3.2,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht männlich,predictor,numeric,
+41,DEM_3.3,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht weiblich,predictor,numeric,
+42,DEM_3.4,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht unter 10 zusammen,predictor,numeric,
+43,DEM_3.5,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht unter 10 männlich,predictor,numeric,
+44,DEM_3.6,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht unter 10 weiblich,predictor,numeric,
+45,DEM_3.7,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 10-19 zusammen,predictor,numeric,
+46,DEM_3.8,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 10-19 weiblich,predictor,numeric,
+47,DEM_3.9,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 10-19 männlich,predictor,numeric,
+48,DEM_3.10,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 20-29 zusammen,predictor,numeric,
+49,DEM_3.11,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 20-30 männlich,predictor,numeric,
+50,DEM_3.12,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 20-31 weiblich,predictor,numeric,
+51,DEM_3.13,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 30-39 zusammen,predictor,numeric,
+52,DEM_3.14,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 30-40 männlich,predictor,numeric,
+53,DEM_3.15,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 30-41 weiblich,predictor,numeric,
+54,DEM_3.16,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 40-49 zusammen,predictor,numeric,
+55,DEM_3.17,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 40-50 männlich,predictor,numeric,
+56,DEM_3.18,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 40-51 weiblich,predictor,numeric,
+57,DEM_3.19,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 50-59 zusammen,predictor,numeric,
+58,DEM_3.20,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 50-60 männlich,predictor,numeric,
+59,DEM_3.21,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 50-61 weiblich,predictor,numeric,
+60,DEM_3.22,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 60-69 zusammen,predictor,numeric,
+61,DEM_3.23,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 60-70 männlich,predictor,numeric,
+62,DEM_3.24,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 60-71 weiblich,predictor,numeric,
+63,DEM_3.25,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 70-79 zusammen,predictor,numeric,
+64,DEM_3.26,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 70-80 männlich,predictor,numeric,
+65,DEM_3.27,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 70-81 weiblich,predictor,numeric,
+66,DEM_3.28,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 80 und älter zusammen,predictor,numeric,
+67,DEM_3.29,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 80 und älter männlich,predictor,numeric,
+68,DEM_3.30,Bevölkerung nach Alter (10er-Jahresgruppen) und Geschlecht Alter und Geschlecht 80 und älter weiblich,predictor,numeric,
+69,DEM_4.1,Bevölkerung nach 11 Altersklassen und Geschlecht insgesamt,predictor,numeric,
+70,DEM_4.2,Bevölkerung nach 11 Altersklassen und Geschlecht männlich,predictor,numeric,
+71,DEM_4.3,Bevölkerung nach 11 Altersklassen und Geschlecht weiblich,predictor,numeric,
+72,DEM_4.4,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht unter 3 Jahre zusammen,predictor,numeric,
+73,DEM_4.5,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht unter 3 Jahre männlich,predictor,numeric,
+74,DEM_4.6,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht unter 3 Jahre weiblich,predictor,numeric,
+75,DEM_4.7,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 3-5 Jahre zusammen,predictor,numeric,
+76,DEM_4.8,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 3-5 Jahre weiblich,predictor,numeric,
+77,DEM_4.9,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 3-5 Jahre männlich,predictor,numeric,
+78,DEM_4.10,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 6-14 Jahre zusammen,predictor,numeric,
+79,DEM_4.11,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 6-14 Jahre männlich,predictor,numeric,
+80,DEM_4.12,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 6-14 Jahre weiblich,predictor,numeric,
+81,DEM_4.13,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 15-17 Jahre zusammen,predictor,numeric,
+82,DEM_4.14,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 15-17 Jahre männlich,predictor,numeric,
+83,DEM_4.15,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 15-17 Jahre weiblich,predictor,numeric,
+84,DEM_4.16,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 18-24 Jahre zusammen,predictor,numeric,
+85,DEM_4.17,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 18-24 Jahre männlich,predictor,numeric,
+86,DEM_4.18,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 18-24 Jahre weiblich,predictor,numeric,
+87,DEM_4.19,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 25-29 Jahre zusammen,predictor,numeric,
+88,DEM_4.20,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 25-29 Jahre männlich,predictor,numeric,
+89,DEM_4.21,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 25-29 Jahre weiblich,predictor,numeric,
+90,DEM_4.22,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 30-39 Jahre zusammen,predictor,numeric,
+91,DEM_4.23,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 30-39 Jahre männlich,predictor,numeric,
+92,DEM_4.24,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 30-39 Jahre weiblich,predictor,numeric,
+93,DEM_4.25,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 40-49 Jahre zusammen,predictor,numeric,
+94,DEM_4.26,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 40-49 Jahre männlich,predictor,numeric,
+95,DEM_4.27,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 40-49 Jahre weiblich,predictor,numeric,
+96,DEM_4.28,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 50-64 Jahre zusammen,predictor,numeric,
+97,DEM_4.29,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 50-64 Jahre männlich,predictor,numeric,
+98,DEM_4.30,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 50-64 Jahre weiblich,predictor,numeric,
+99,DEM_4.31,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 65-74 Jahre zusammen,predictor,numeric,
+100,DEM_4.32,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 65-74 Jahre männlich,predictor,numeric,
+101,DEM_4.33,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 65-74 Jahre weiblich,predictor,numeric,
+102,DEM_4.34,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 75 Jahre und älter zusammen,predictor,numeric,
+103,DEM_4.35,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 75 Jahre und älter männlich,predictor,numeric,
+104,DEM_4.36,Bevölkerung nach 11 Altersklassen und Geschlecht Alter und Geschlecht 75 Jahre und älter weiblich,predictor,numeric,
+105,DEM_5.1,Bevölkerung nach Staatsangehörigkeitsgruppen insgesamt,predictor,numeric,
+106,DEM_5.2,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Deutschland,predictor,numeric,
+107,DEM_5.3,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland zusammen,predictor,numeric,
+108,DEM_5.4,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon EU27-Land,predictor,numeric,
+109,DEM_5.5,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon Sonstiges Europa,predictor,numeric,
+110,DEM_5.6,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon Sonstige Welt,predictor,numeric,
+111,DEM_5.7,Bevölkerung nach Staatsangehörigkeitsgruppen Staatsangehörigkeitsgruppen Ausland davon Sonstige,predictor,numeric,
+112,DEM_6.1,Bevölkerung nach Geburtsland (Gruppen) insgesamt,predictor,numeric,
+113,DEM_6.2,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Deutschland,predictor,numeric,
+114,DEM_6.3,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland zusammen,predictor,numeric,
+115,DEM_6.4,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon EU27-Land,predictor,numeric,
+116,DEM_6.5,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon Sonstiges Europa,predictor,numeric,
+117,DEM_6.6,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon Sonstige Welt,predictor,numeric,
+118,DEM_6.7,Bevölkerung nach Geburtsland (Gruppen) Geburtsland (Gruppen) Ausland davon Sonstige,predictor,numeric,
+119,REL_1.1,Bevölkerung nach Religion Insgesamt,predictor,numeric,
+120,REL_1.2,Bevölkerung nach Religion Religion Römisch-katholische Kirche (öffentlich-rechtlich),predictor,numeric,
+121,REL_1.3,Bevölkerung nach Religion Religion Evangelische Kirche (öffentlich-rechtlich),predictor,numeric,
+122,REL_1.4,"Bevölkerung nach Religion Religion Sonstige, keine, ohne Angabe",predictor,numeric,
+123,MIG_1.1,Bevölkerung nach Migrationshintergrund und -erfahrung Insgesamt,predictor,numeric,
+124,MIG_1.2,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen ohne Migrationshintergrund,predictor,numeric,
+125,MIG_1.3,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung zusammen,predictor,numeric,
+126,MIG_1.4,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Ausländer/-innen zusammen,predictor,numeric,
+127,MIG_1.5,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Ausländer/-innen mit eigener Migrationserfahrung,predictor,numeric,
+128,MIG_1.6,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Ausländer/-innen ohne eigene Migrationserfahrung,predictor,numeric,
+129,MIG_1.7,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund zusammen,predictor,numeric,
+130,MIG_1.8,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund mit eigener Migrationserfahrung,predictor,numeric,
+131,MIG_1.9,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund ohne eigene Migrationserfahrung,predictor,numeric,
+132,MIG_1.10,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund davon mit beidseitigem Migrationshintergrund,predictor,numeric,
+133,MIG_1.11,Bevölkerung nach Migrationshintergrund und -erfahrung Migrationshintergrund und -erfahrung Personen mit Migrationshintergrund davon Deutsche mit Migrationshintergrund davon mit einseitigem Migrationshintergrund,predictor,numeric,
+134,MIG_2.1,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Insgesamt,predictor,numeric,
+135,MIG_2.2,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1956 - 1959,predictor,numeric,
+136,MIG_2.3,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1960 - 1969,predictor,numeric,
+137,MIG_2.4,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1970 - 1979,predictor,numeric,
+138,MIG_2.5,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1980 - 1989,predictor,numeric,
+139,MIG_2.6,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 1990 - 1999,predictor,numeric,
+140,MIG_2.7,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt 2000 - 2011,predictor,numeric,
+141,MIG_2.8,Personen mit Migrationserfahrung nach Zuzugsjahrzehnt Zuzugsjahrzehnt Unbekannt,predictor,numeric,
+142,MIG_3.1,Bevölkerung mit Migrationshintergrund nach Regionen Insgesamt,predictor,numeric,
+143,MIG_3.2,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen EU27-Land,predictor,numeric,
+144,MIG_3.3,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen Sonstiges Europa,predictor,numeric,
+145,MIG_3.4,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen Sonstige Welt,predictor,numeric,
+146,MIG_3.5,Bevölkerung mit Migrationshintergrund nach Regionen Migrationshintergrund nach Regionen Unbekanntes Ausland,predictor,numeric,
+147,ERW_1.1,Bevölkerung nach Erwerbsstatus und Geschlecht Insgesamt,response,numeric,
+148,ERW_1.2,Bevölkerung nach Erwerbsstatus und Geschlecht männlich,response,numeric,
+149,ERW_1.3,Bevölkerung nach Erwerbsstatus und Geschlecht weiblich,response,numeric,
+150,ERW_1.4,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen zusammen,response,numeric,
+151,ERW_1.5,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen männlich,response,numeric,
+152,ERW_1.6,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen weiblich,response,numeric,
+153,ERW_1.7,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbstätige zusammen,response,numeric,
+154,ERW_1.8,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbstätige männlich,response,numeric,
+155,ERW_1.9,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbstätige weiblich,response,numeric,
+156,ERW_1.10,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbslose zusammen,response,numeric,
+157,ERW_1.11,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbslose männlich,response,numeric,
+158,ERW_1.12,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Erwerbspersonen davon Erwerbslose weiblich,response,numeric,
+159,ERW_1.13,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Nichterwerbspersonen zusammen,response,numeric,
+160,ERW_1.14,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Nichterwerbspersonen männlich,response,numeric,
+161,ERW_1.15,Bevölkerung nach Erwerbsstatus und Geschlecht Erwerbsstatus und Geschlecht Nichterwerbspersonen weiblich,response,numeric,
+162,ERW_2.1,Erwerbstätige nach Stellung im Beruf Insgesamt,Informational,numeric,
+163,ERW_2.2,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Angestellte/Arbeiter/-innen,Informational,numeric,
+164,ERW_2.3,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Beamte/-innen,Informational,numeric,
+165,ERW_2.4,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Selbstständige mit Beschäftigten,Informational,numeric,
+166,ERW_2.5,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Selbstständige ohne Beschäftigte,Informational,numeric,
+167,ERW_2.6,Erwerbstätige nach Stellung im Beruf Stellung im Beruf Mithelfende Familienangehörige,Informational,numeric,
+168,ERW_3.1,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Insgesamt,Informational,numeric,
+169,ERW_3.2,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Führungskräfte,Informational,numeric,
+170,ERW_3.3,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Akademische Berufe,Informational,numeric,
+171,ERW_3.4,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Techniker und gleichrangige nichttechnische Berufe,Informational,numeric,
+172,ERW_3.5,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Bürokräfte und verwandte Berufe,Informational,numeric,
+173,ERW_3.6,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Dienstleistungsberufe und Verkäufer,Informational,numeric,
+174,ERW_3.7,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Fachkräfte in Land-/Forstwirtschaft und Fischerei,Informational,numeric,
+175,ERW_3.8,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Handwerks- und verwandte Berufe,Informational,numeric,
+176,ERW_3.9,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Bediener von Anlagen/Maschinen und Montageberufe,Informational,numeric,
+177,ERW_3.10,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Hilfsarbeitskräfte,Informational,numeric,
+178,ERW_3.11,Erwerbstätige Bevölkerung nach Beruf (Hauptgruppen ISCO-08) Beruf (Hauptgruppen ISCO-08) Angehörige der regulären Streitkräfte,Informational,numeric,
+179,ERW_4.1,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Insgesamt,Informational,numeric,
+180,ERW_4.2,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Land-/Forstwirtschaft, Fischerei",Informational,numeric,
+181,ERW_4.3,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Produzierendes Gewerbe,Informational,numeric,
+182,ERW_4.4,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Bergbau und Verarbeitendes Gewerbe,Informational,numeric,
+183,ERW_4.5,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Energie-/ Wasserversorgung, Abfallentsorgung",Informational,numeric,
+184,ERW_4.6,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Baugewerbe,Informational,numeric,
+185,ERW_4.7,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Handel, Gastgewerbe und Verkehr; IuK",Informational,numeric,
+186,ERW_4.8,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Handel, Reparatur von KFZ, Gastgewerbe",Informational,numeric,
+187,ERW_4.9,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon   Verkehr und Lagerei, Kommunikation",Informational,numeric,
+188,ERW_4.10,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche Sonstige Dienstleistungen,Informational,numeric,
+189,ERW_4.11,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Finanz- und Versicherungsdienstleistungen,Informational,numeric,
+190,ERW_4.12,"Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Grundstücks-/Wohnungswesen, wirtschaftl. Dienstl.",Informational,numeric,
+191,ERW_4.13,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Öffentliche Verwaltung u.ä.,Informational,numeric,
+192,ERW_4.14,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche davon Öfftl. und priv. Dienstl. (ohne öfftl. Verwaltung),Informational,numeric,
+193,ERW_4.15,Erwerbstätige nach Wirtschaftszweig Wirtschafts(unter)bereiche Wirtschaftszweig Wirtschafts(unter)bereiche unbekannt,Informational,numeric,
+194,BIL_2.1,Personen in schulischer Ausbildung nach Klassenstufen Insgesamt,predictor,numeric,
+195,BIL_2.2,Personen in schulischer Ausbildung nach Klassenstufen Klassenstufen Klasse 1 bis 4,predictor,numeric,
+196,BIL_2.3,Personen in schulischer Ausbildung nach Klassenstufen Klassenstufen Klasse 5 bis 9 bzw. 10 (Sekundarstufe I),predictor,numeric,
+197,BIL_2.4,Personen in schulischer Ausbildung nach Klassenstufen Klassenstufen Klasse 11 bis 13 (Gymnasiale Oberstufe),predictor,numeric,
+198,BIL_3.1,Personen in schulischer Ausbildung nach Schulform Insgesamt,predictor,numeric,
+199,BIL_3.2,Personen in schulischer Ausbildung nach Schulform Schulform Grundschule,predictor,numeric,
+200,BIL_3.3,Personen in schulischer Ausbildung nach Schulform Schulform Hauptschule,predictor,numeric,
+201,BIL_3.4,Personen in schulischer Ausbildung nach Schulform Schulform Realschule,predictor,numeric,
+202,BIL_3.5,Personen in schulischer Ausbildung nach Schulform Schulform Gymnasium,predictor,numeric,
+203,BIL_3.6,Personen in schulischer Ausbildung nach Schulform Schulform Gesamtschule,predictor,numeric,
+204,BIL_3.7,Personen in schulischer Ausbildung nach Schulform Schulform Sonstige Schule,predictor,numeric,
+205,BIL_4.1,Personen ab 15 Jahren nach höchstem schulischen Abschluss Insgesamt,predictor,numeric,
+206,BIL_4.2,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Ohne oder noch kein Schulabschluss,predictor,numeric,
+207,BIL_4.3,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Ohne Schulabschluss,predictor,numeric,
+208,BIL_4.4,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Noch in schulischer Ausbildung,predictor,numeric,
+209,BIL_4.5,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Haupt-/ Volksschulabschluss,predictor,numeric,
+210,BIL_4.6,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Mittlerer Schulabschluss und gymnasiale Oberstufe,predictor,numeric,
+211,BIL_4.7,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Realschul- oder gleichwertiger Abschluss,predictor,numeric,
+212,BIL_4.8,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss davon Schüler/-innen der gymnasialen Oberstufe,predictor,numeric,
+213,BIL_4.9,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Fachhochschulreife,predictor,numeric,
+214,BIL_4.10,Personen ab 15 Jahren nach höchstem schulischen Abschluss Höchster Schulabschluss Allg./fachgebundene Hochschulreife (Abitur),predictor,numeric,
+215,BIL_5.1,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Insgesamt,predictor,numeric,
+216,BIL_5.2,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Ohne beruflichen Abschluss,predictor,numeric,
+217,BIL_5.3,"Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Lehre, Berufsausbildung im dualen System",predictor,numeric,
+218,BIL_5.4,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Fachschulabschluss,predictor,numeric,
+219,BIL_5.5,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Abschluss einer Fachakademie oder Berufsakademie,predictor,numeric,
+220,BIL_5.6,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Fachhochschulabschluss,predictor,numeric,
+221,BIL_5.7,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Hochschulabschluss,predictor,numeric,
+222,BIL_5.8,Personen ab 15 Jahren nach höchstem beruflichen Abschluss (ausführlich) Höchster beruflicher Abschluss (ausführlich) Promotion,predictor,numeric,
