@@ -1,0 +1,7 @@
+﻿Variable;Quote;Berechnung
+Migrationshintergrund;Migrationsquote;(Anzahl Personen mit Migrationshintergrund / Anzahl Personen insgesamt)
+Religionszugehörigkeit;Christenquote*;(Römisch-katholische Kirche + Evangelische Kirch) / Bevölkerung nach Religion gesamt
+Geschlecht;Männerquote;(Anzahl Männer / Einwohner gesamt)
+Bildungsniveau;Akademikerquote**;(Fach- oder Berufsakademie + FH-Abschluss + Hochschulabschluss + Promotion) / höchster beruflicher Abschluss insgesamt
+Stellung im Beruf;Beamtenquote;(Anzahl Beamter / Erwerbstätige insgesamt)
+Familienstand;Singlequote***;(Anzahl Lediger + Verwitwete + Geschiedene + eingetragene Lebenspartnerschaft aufgehoben + Eingetragener Lebenspartner/- in verstorben + ohne Angaben) / Familienstand gesamt
