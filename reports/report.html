@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Draft Analysis</title>
+<title>Report</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -45,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Draft Analysis</h1>
+<h1 class="title">Report</h1>
 </div>
 
 
@@ -71,6 +134,77 @@ ul.task-list li input[type="checkbox"] {
 <p>This section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables.</p>
 <p>It should also include some exploratory data analysis.</p>
 <p>All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.</p>
+<section id="import-relevanter-module" class="level3">
+<h3 class="anchored" data-anchor-id="import-relevanter-module">Import relevanter Module</h3>
+<div class="cell" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#import relevant modulues</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> warnings</span>
+<span id="cb1-7"><a href="#cb1-7"></a>warnings.simplefilter(action<span class="op">=</span><span class="st">'ignore'</span>, category<span class="op">=</span><span class="pp">FutureWarning</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>alt.data_transformers.disable_max_rows() <span class="co">#aus Code overview Histogramm</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="co"># to compute the mode </span></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression <span class="co">#Fitting a line</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LassoCV</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Lasso</span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># To visualize</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="im">import</span> joblib</span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="import-datensatz" class="level3">
+<h3 class="anchored" data-anchor-id="import-datensatz">Import Datensatz</h3>
+<div class="cell" data-execution_count="18">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df_bevoelkerung <span class="op">=</span> pd.read_csv(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">'../references/csv_Bevoelkerung/Zensus11_Datensatz_Bevoelkerung.csv'</span>,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    delimiter<span class="op">=</span><span class="st">';'</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    dtype<span class="op">=</span>{</span>
+<span id="cb2-5"><a href="#cb2-5"></a>        <span class="st">'AGS_12'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="st">'RS_Land'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="st">'RS_RB_NUTS2'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        <span class="st">'RS_Kreis'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        <span class="st">'RS_VB'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        <span class="st">'RS_Gem'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>        <span class="st">'Name'</span>: <span class="st">'category'</span>,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>        <span class="st">'Reg_Hier'</span>: <span class="st">'category'</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    },</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    low_memory<span class="op">=</span> <span class="va">False</span> <span class="co">#um Warnung zu verhindern</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="data-structure" class="level3">
+<h3 class="anchored" data-anchor-id="data-structure">Data Structure</h3>
+<p>Um einen ersten groben Überblick zu bekommen, geben wir uns eine Info über unseren Datensatz mit der Pandas-Funktion <code>pd.info()</code> aus.</p>
+<div class="cell" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 12544 entries, 0 to 12543
+Columns: 223 entries, AGS_12 to BIL_5.8
+dtypes: category(8), float64(41), int64(8), object(166)
+memory usage: 21.4+ MB</code></pre>
+</div>
+</div>
+<p>Hierbei ist zu sehen, dass 166 Spalten als Datentyp <code>Objekt</code> haben und somit auf gemischte Datentypen hindeutet. Außerdem sieht man, dass dass manche Variablen nur in 2187 Zeilen gefüllt sind.<br><br> Daher führen wir im nächsten Schritt Daten Korrekturen durch, um saubere Datentypen zu haben.</p>
+</section>
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
@@ -104,6 +238,240 @@ ul.task-list li input[type="checkbox"] {
 <p>REMOVE THE FOLLOWING TEXT</p>
 </blockquote>
 <p>In this section you’ll include a summary of what you have learned about your research question along with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis and provide suggestions on ways the analysis could be improved. Any potential issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Lastly, this section will include ideas for future work.</p>
+<div class="cell" data-execution_count="20">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 12544 entries, 0 to 12543
+Data columns (total 223 columns):
+ #    Column       Non-Null Count  Dtype   
+---   ------       --------------  -----   
+ 0    AGS_12       12544 non-null  category
+ 1    RS_Land      12544 non-null  category
+ 2    RS_RB_NUTS2  12527 non-null  category
+ 3    RS_Kreis     12501 non-null  category
+ 4    RS_VB        12089 non-null  category
+ 5    RS_Gem       11339 non-null  category
+ 6    Name         12544 non-null  category
+ 7    Reg_Hier     12544 non-null  category
+ 8    AEWZ         12544 non-null  int64   
+ 9    DEM_1.1      12544 non-null  int64   
+ 10   DEM_1.2      12544 non-null  object  
+ 11   DEM_1.3      12544 non-null  object  
+ 12   DEM_2.1      12544 non-null  int64   
+ 13   DEM_2.2      12544 non-null  object  
+ 14   DEM_2.3      12544 non-null  object  
+ 15   DEM_2.4      12544 non-null  object  
+ 16   DEM_2.5      12544 non-null  object  
+ 17   DEM_2.6      12544 non-null  object  
+ 18   DEM_2.7      12544 non-null  object  
+ 19   DEM_2.8      12544 non-null  object  
+ 20   DEM_2.9      12544 non-null  object  
+ 21   DEM_2.10     12544 non-null  object  
+ 22   DEM_2.11     12544 non-null  object  
+ 23   DEM_2.12     12544 non-null  object  
+ 24   DEM_2.13     12544 non-null  object  
+ 25   DEM_2.14     12544 non-null  object  
+ 26   DEM_2.15     12544 non-null  object  
+ 27   DEM_2.16     12544 non-null  object  
+ 28   DEM_2.17     12544 non-null  object  
+ 29   DEM_2.18     12544 non-null  object  
+ 30   DEM_2.19     12544 non-null  object  
+ 31   DEM_2.20     12544 non-null  object  
+ 32   DEM_2.21     12544 non-null  object  
+ 33   DEM_2.22     12544 non-null  object  
+ 34   DEM_2.23     12544 non-null  object  
+ 35   DEM_2.24     12544 non-null  object  
+ 36   DEM_2.25     12544 non-null  object  
+ 37   DEM_2.26     12544 non-null  object  
+ 38   DEM_2.27     12544 non-null  object  
+ 39   DEM_3.1      12544 non-null  int64   
+ 40   DEM_3.2      12544 non-null  object  
+ 41   DEM_3.3      12544 non-null  object  
+ 42   DEM_3.4      12544 non-null  object  
+ 43   DEM_3.5      12544 non-null  object  
+ 44   DEM_3.6      12544 non-null  object  
+ 45   DEM_3.7      12544 non-null  object  
+ 46   DEM_3.8      12544 non-null  object  
+ 47   DEM_3.9      12544 non-null  object  
+ 48   DEM_3.10     12544 non-null  object  
+ 49   DEM_3.11     12544 non-null  object  
+ 50   DEM_3.12     12544 non-null  object  
+ 51   DEM_3.13     12544 non-null  object  
+ 52   DEM_3.14     12544 non-null  object  
+ 53   DEM_3.15     12544 non-null  object  
+ 54   DEM_3.16     12544 non-null  object  
+ 55   DEM_3.17     12544 non-null  object  
+ 56   DEM_3.18     12544 non-null  object  
+ 57   DEM_3.19     12544 non-null  object  
+ 58   DEM_3.20     12544 non-null  object  
+ 59   DEM_3.21     12544 non-null  object  
+ 60   DEM_3.22     12544 non-null  object  
+ 61   DEM_3.23     12544 non-null  object  
+ 62   DEM_3.24     12544 non-null  object  
+ 63   DEM_3.25     12544 non-null  object  
+ 64   DEM_3.26     12544 non-null  object  
+ 65   DEM_3.27     12544 non-null  object  
+ 66   DEM_3.28     12544 non-null  object  
+ 67   DEM_3.29     12544 non-null  object  
+ 68   DEM_3.30     12544 non-null  object  
+ 69   DEM_4.1      12544 non-null  int64   
+ 70   DEM_4.2      12544 non-null  object  
+ 71   DEM_4.3      12544 non-null  object  
+ 72   DEM_4.4      12544 non-null  object  
+ 73   DEM_4.5      12544 non-null  object  
+ 74   DEM_4.6      12544 non-null  object  
+ 75   DEM_4.7      12544 non-null  object  
+ 76   DEM_4.8      12544 non-null  object  
+ 77   DEM_4.9      12544 non-null  object  
+ 78   DEM_4.10     12544 non-null  object  
+ 79   DEM_4.11     12544 non-null  object  
+ 80   DEM_4.12     12544 non-null  object  
+ 81   DEM_4.13     12544 non-null  object  
+ 82   DEM_4.14     12544 non-null  object  
+ 83   DEM_4.15     12544 non-null  object  
+ 84   DEM_4.16     12544 non-null  object  
+ 85   DEM_4.17     12544 non-null  object  
+ 86   DEM_4.18     12544 non-null  object  
+ 87   DEM_4.19     12544 non-null  object  
+ 88   DEM_4.20     12544 non-null  object  
+ 89   DEM_4.21     12544 non-null  object  
+ 90   DEM_4.22     12544 non-null  object  
+ 91   DEM_4.23     12544 non-null  object  
+ 92   DEM_4.24     12544 non-null  object  
+ 93   DEM_4.25     12544 non-null  object  
+ 94   DEM_4.26     12544 non-null  object  
+ 95   DEM_4.27     12544 non-null  object  
+ 96   DEM_4.28     12544 non-null  object  
+ 97   DEM_4.29     12544 non-null  object  
+ 98   DEM_4.30     12544 non-null  object  
+ 99   DEM_4.31     12544 non-null  object  
+ 100  DEM_4.32     12544 non-null  object  
+ 101  DEM_4.33     12544 non-null  object  
+ 102  DEM_4.34     12544 non-null  object  
+ 103  DEM_4.35     12544 non-null  object  
+ 104  DEM_4.36     12544 non-null  object  
+ 105  DEM_5.1      12544 non-null  int64   
+ 106  DEM_5.2      12544 non-null  object  
+ 107  DEM_5.3      12544 non-null  object  
+ 108  DEM_5.4      12544 non-null  object  
+ 109  DEM_5.5      12544 non-null  object  
+ 110  DEM_5.6      12544 non-null  object  
+ 111  DEM_5.7      12544 non-null  object  
+ 112  DEM_6.1      12544 non-null  int64   
+ 113  DEM_6.2      12544 non-null  object  
+ 114  DEM_6.3      12544 non-null  object  
+ 115  DEM_6.4      12544 non-null  object  
+ 116  DEM_6.5      12544 non-null  object  
+ 117  DEM_6.6      12544 non-null  object  
+ 118  DEM_6.7      12544 non-null  object  
+ 119  REL_1.1      12544 non-null  int64   
+ 120  REL_1.2      12544 non-null  object  
+ 121  REL_1.3      12544 non-null  object  
+ 122  REL_1.4      12544 non-null  object  
+ 123  MIG_1.1      2187 non-null   float64 
+ 124  MIG_1.2      2187 non-null   float64 
+ 125  MIG_1.3      2187 non-null   object  
+ 126  MIG_1.4      2187 non-null   object  
+ 127  MIG_1.5      2187 non-null   object  
+ 128  MIG_1.6      2187 non-null   object  
+ 129  MIG_1.7      2187 non-null   object  
+ 130  MIG_1.8      2187 non-null   object  
+ 131  MIG_1.9      2187 non-null   object  
+ 132  MIG_1.10     2187 non-null   object  
+ 133  MIG_1.11     2187 non-null   object  
+ 134  MIG_2.1      2187 non-null   object  
+ 135  MIG_2.2      2187 non-null   object  
+ 136  MIG_2.3      2187 non-null   object  
+ 137  MIG_2.4      2187 non-null   object  
+ 138  MIG_2.5      2187 non-null   object  
+ 139  MIG_2.6      2187 non-null   object  
+ 140  MIG_2.7      2187 non-null   object  
+ 141  MIG_2.8      2187 non-null   object  
+ 142  MIG_3.1      2187 non-null   object  
+ 143  MIG_3.2      2187 non-null   object  
+ 144  MIG_3.3      2187 non-null   object  
+ 145  MIG_3.4      2187 non-null   object  
+ 146  MIG_3.5      2187 non-null   object  
+ 147  ERW_1.1      2187 non-null   float64 
+ 148  ERW_1.2      2187 non-null   float64 
+ 149  ERW_1.3      2187 non-null   float64 
+ 150  ERW_1.4      2187 non-null   float64 
+ 151  ERW_1.5      2187 non-null   float64 
+ 152  ERW_1.6      2187 non-null   float64 
+ 153  ERW_1.7      2187 non-null   float64 
+ 154  ERW_1.8      2187 non-null   float64 
+ 155  ERW_1.9      2187 non-null   float64 
+ 156  ERW_1.10     2186 non-null   object  
+ 157  ERW_1.11     2187 non-null   object  
+ 158  ERW_1.12     2187 non-null   object  
+ 159  ERW_1.13     2187 non-null   float64 
+ 160  ERW_1.14     2187 non-null   float64 
+ 161  ERW_1.15     2187 non-null   float64 
+ 162  ERW_2.1      2187 non-null   float64 
+ 163  ERW_2.2      2187 non-null   float64 
+ 164  ERW_2.3      2187 non-null   object  
+ 165  ERW_2.4      2187 non-null   object  
+ 166  ERW_2.5      2187 non-null   object  
+ 167  ERW_2.6      2187 non-null   object  
+ 168  ERW_3.1      2187 non-null   float64 
+ 169  ERW_3.2      2187 non-null   object  
+ 170  ERW_3.3      2187 non-null   float64 
+ 171  ERW_3.4      2187 non-null   float64 
+ 172  ERW_3.5      2187 non-null   float64 
+ 173  ERW_3.6      2187 non-null   float64 
+ 174  ERW_3.7      2187 non-null   object  
+ 175  ERW_3.8      2187 non-null   float64 
+ 176  ERW_3.9      2187 non-null   object  
+ 177  ERW_3.10     2187 non-null   object  
+ 178  ERW_3.11     2187 non-null   object  
+ 179  ERW_4.1      2187 non-null   float64 
+ 180  ERW_4.2      2187 non-null   object  
+ 181  ERW_4.3      2187 non-null   object  
+ 182  ERW_4.4      2187 non-null   object  
+ 183  ERW_4.5      2146 non-null   object  
+ 184  ERW_4.6      2187 non-null   object  
+ 185  ERW_4.7      2187 non-null   object  
+ 186  ERW_4.8      2187 non-null   object  
+ 187  ERW_4.9      2183 non-null   object  
+ 188  ERW_4.10     2187 non-null   float64 
+ 189  ERW_4.11     2160 non-null   object  
+ 190  ERW_4.12     2187 non-null   object  
+ 191  ERW_4.13     2185 non-null   object  
+ 192  ERW_4.14     2187 non-null   object  
+ 193  ERW_4.15     2185 non-null   object  
+ 194  BIL_2.1      2187 non-null   float64 
+ 195  BIL_2.2      2187 non-null   float64 
+ 196  BIL_2.3      2187 non-null   float64 
+ 197  BIL_2.4      2187 non-null   object  
+ 198  BIL_3.1      2187 non-null   float64 
+ 199  BIL_3.2      2187 non-null   float64 
+ 200  BIL_3.3      2187 non-null   object  
+ 201  BIL_3.4      2187 non-null   object  
+ 202  BIL_3.5      2187 non-null   object  
+ 203  BIL_3.6      2187 non-null   object  
+ 204  BIL_3.7      2187 non-null   object  
+ 205  BIL_4.1      2187 non-null   float64 
+ 206  BIL_4.2      2187 non-null   float64 
+ 207  BIL_4.3      2187 non-null   object  
+ 208  BIL_4.4      2187 non-null   object  
+ 209  BIL_4.5      2187 non-null   float64 
+ 210  BIL_4.6      2187 non-null   float64 
+ 211  BIL_4.7      2187 non-null   float64 
+ 212  BIL_4.8      2187 non-null   object  
+ 213  BIL_4.9      2187 non-null   float64 
+ 214  BIL_4.10     2187 non-null   float64 
+ 215  BIL_5.1      2187 non-null   float64 
+ 216  BIL_5.2      2187 non-null   float64 
+ 217  BIL_5.3      2187 non-null   float64 
+ 218  BIL_5.4      2187 non-null   float64 
+ 219  BIL_5.5      2187 non-null   object  
+ 220  BIL_5.6      2187 non-null   float64 
+ 221  BIL_5.7      2187 non-null   object  
+ 222  BIL_5.8      2187 non-null   object  
+dtypes: category(8), float64(41), int64(8), object(166)
+memory usage: 21.4+ MB</code></pre>
+</div>
+</div>
 </section>
 </section>
 
