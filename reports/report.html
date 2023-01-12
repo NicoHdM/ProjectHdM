@@ -341,18 +341,11 @@ dtypes: category(2), float64(7)
 memory usage: 1.0 MB</code></pre>
 </div>
 </div>
-<p>Liste mit Prädikatoren:</p>
+<p>Defintion der Prädiktor-Variablen:</p>
 <div class="cell" data-execution_count="35">
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>['Männerquote',
- 'Akademikerquote',
- 'Beamtenquote',
- 'Singlequote',
- 'Arbeitslosenquote2',
- 'Migrationsquote2']</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>predictor <span class="op">=</span> df_analyse.iloc[:,<span class="dv">5</span>:<span class="dv">11</span>].columns.values.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>Dataframe auf Hierarchie-Ebene <strong>Gemeinde</strong> filtern.</p>
+<p>Dataframe auf Hierarchie-Ebene <strong>Gemeinde</strong> filtern. Neues Dataframe heißt nun <code>df_analyse_gemeinde</code>.</p>
 <div class="cell" data-execution_count="59">
 <div class="cell-output cell-output-display" data-execution_count="59">
 
@@ -534,12 +527,6 @@ dtypes: category(2), float64(9)
 memory usage: 465.3 KB</code></pre>
 </div>
 </div>
-<p>Variablen Migration:</p>
-<p>Variablen Religion:</p>
-<p>Variablen Geschlecht:</p>
-<p>Variablen Bildung:</p>
-<p>Variablen Beruf:</p>
-<p>Variablen Familien:</p>
 <p>It should also include some exploratory data analysis.</p>
 <p>All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.</p>
 <p>Zur Visualisierung der Beziehungen zwischen Response- und Predictor Variables haben wir uns für die Anwendung von Streudiagrammen bzw. Scatter Plots entschieden. Jeden Prädikator haben wir mit der Arbeitslosenquote2 (bereinigte Arbeitslosenquote) gegegnübergestellt, um erste Erkenntnisse gewinnen zu können (siehe <a href="#sec-EDArel">Section&nbsp;5.3.1</a>). Jedoch ist es anhand der Scatter Plots zunächst schwierig zu erkennen, welcher Prädikator die höchste Korrelation mit der Arbeitslosigkeit aufweist, da die berechneten Variablen unterschiedliche Werte bzw. Verteilungen auf der X-Achse annehmen und kein direkter Vergleich stattfinden kann. <br><br></p>
