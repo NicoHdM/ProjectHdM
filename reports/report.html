@@ -155,7 +155,7 @@ Fragestellung
 <p>Zur Visualisierung der Beziehungen zwischen Response- und Predictor Variables haben wir uns für die Anwendung von Streudiagrammen bzw. Scatter Plots entschieden. Jeden Prädikator haben wir mit der Arbeitslosenquote2 (bereinigte Arbeitslosenquote) gegegnübergestellt, um erste Erkenntnisse gewinnen zu können (siehe <a href="#sec-EDArel">Section&nbsp;5.3.1</a>). Jedoch ist es anhand der Scatter Plots zunächst schwierig zu erkennen, welcher Prädikator die höchste Korrelation mit der Arbeitslosigkeit aufweist, da die berechneten Variablen unterschiedliche Werte bzw. Verteilungen auf der X-Achse annehmen und kein direkter Vergleich stattfinden kann. <br><br> Zu erkennen ist, dass lediglich die Variable “Christenquote” eine moderate (über 0,5 bzw. unter -0,5) Korrelation mit der Arbeitslosenquote aufweist. Zwei weitere Quoten, die noch eine leichte bis moderarte Korrelation haben sind die “Singlequote” sowie die “Migrationsquote”.<br><br></p>
 <section id="import-relevanter-module" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="import-relevanter-module"><span class="header-section-number">1.1</span> Import relevanter Module</h2>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="28">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#import relevant modulues</span></span>
@@ -189,7 +189,7 @@ Fragestellung
 </section>
 <section id="import-datensatz" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="import-datensatz"><span class="header-section-number">1.2</span> Import Datensatz</h2>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="30">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df_bevoelkerung <span class="op">=</span> pd.read_csv(</span>
@@ -213,7 +213,7 @@ Fragestellung
 <section id="data-structure" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="data-structure"><span class="header-section-number">1.3</span> Data Structure</h2>
 <p>Um einen ersten groben Überblick zu bekommen, geben wir uns eine Info über unseren Datensatz mit der Pandas-Funktion <code>pd.info()</code> aus.</p>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="31">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 12544 entries, 0 to 12543
@@ -231,7 +231,7 @@ memory usage: 21.4+ MB</code></pre>
 <li>/ und - in 0-Werte verwandeln, da diese im engeren Sinne als 0 zählen</li>
 <li>Zahlen in Klammern als normale Zahlen verwandeln</li>
 </ul>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="32">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># integers in float verwandeln</span></span>
@@ -246,7 +246,7 @@ memory usage: 21.4+ MB</code></pre>
 </details>
 </div>
 <p>Die definierten predictor (siehe <a href="#sec-pvar">Section&nbsp;5.2.1</a>)variables müssen im Folgenden noch berechnet werden:</p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="37">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_bevoelkerung[<span class="st">'Arbeitslosenquote'</span>] <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'ERW_1.7'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_1.4'</span>]))<span class="op">*</span><span class="dv">100</span></span>
@@ -262,9 +262,9 @@ memory usage: 21.4+ MB</code></pre>
 <span id="cb5-11"><a href="#cb5-11"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.25'</span>]) <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_2.1'</span>])<span class="op">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Check, ob Anpassung der Zahlung erfolgreich:</p>
-<div class="cell" data-execution_count="27">
-<div class="cell-output cell-output-display" data-execution_count="27">
+<p>Check, ob Anpassung der Zahlung erfolgreich auf Basis zweier bekannter Gemeinde mit ursprünglich nicht korrekt formatierten Werten:</p>
+<div class="cell" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="48">
 
 <div>
 
@@ -273,396 +273,72 @@ memory usage: 21.4+ MB</code></pre>
     <tr>
       <th></th>
       <th>DEM_2.7</th>
+      <th>DEM_2.10</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>43</th>
       <td>71.0</td>
+      <td>9.0</td>
     </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="28">
-<div class="cell-output cell-output-display" data-execution_count="28">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>DEM_2.10</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
       <th>44</th>
+      <td>19.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="30">
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 12544 entries, 0 to 12543
-Columns: 232 entries, AGS_12 to Migrationsquote2
-dtypes: category(8), float64(224)
-memory usage: 22.3 MB</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="31">
-<div class="cell-output cell-output-display" data-execution_count="31">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>AGS_12</th>
-      <th>RS_Land</th>
-      <th>RS_RB_NUTS2</th>
-      <th>RS_Kreis</th>
-      <th>RS_VB</th>
-      <th>RS_Gem</th>
-      <th>Name</th>
-      <th>Reg_Hier</th>
-      <th>AEWZ</th>
-      <th>DEM_1.1</th>
-      <th>...</th>
-      <th>BIL_5.8</th>
-      <th>Arbeitslosenquote</th>
-      <th>Migrationsquote</th>
-      <th>Christenquote</th>
-      <th>Männerquote</th>
-      <th>Akademikerquote</th>
-      <th>Beamtenquote</th>
-      <th>Singlequote</th>
-      <th>Arbeitslosenquote2</th>
-      <th>Migrationsquote2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Deutschland</td>
-      <td>Bund</td>
-      <td>80219695.0</td>
-      <td>80219695.0</td>
-      <td>...</td>
-      <td>908970.0</td>
-      <td>4.652478</td>
-      <td>19.205282</td>
-      <td>59.132542</td>
-      <td>48.798417</td>
-      <td>16.541543</td>
-      <td>5.080131</td>
-      <td>54.203097</td>
-      <td>4.652501</td>
-      <td>19.205282</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Schleswig-Holstein</td>
-      <td>Land</td>
-      <td>2800119.0</td>
-      <td>2800119.0</td>
-      <td>...</td>
-      <td>25380.0</td>
-      <td>4.578416</td>
-      <td>12.024768</td>
-      <td>57.512020</td>
-      <td>48.586649</td>
-      <td>14.198910</td>
-      <td>6.676007</td>
-      <td>54.187161</td>
-      <td>4.578416</td>
-      <td>12.024768</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10010000000</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>Flensburg, Stadt</td>
-      <td>Gemeinde</td>
-      <td>82258.0</td>
-      <td>82258.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-      <td>56.027377</td>
-      <td>49.276666</td>
-      <td>13.355639</td>
-      <td>8.378114</td>
-      <td>62.147147</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1001</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Flensburg, Stadt</td>
-      <td>Stadtkreis/kreisfreie Stadt/Landkreis</td>
-      <td>82258.0</td>
-      <td>82258.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-      <td>56.027377</td>
-      <td>49.276666</td>
-      <td>13.355639</td>
-      <td>8.378114</td>
-      <td>62.147147</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>10020000000</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>Kiel, Landeshauptstadt</td>
-      <td>Gemeinde</td>
-      <td>235782.0</td>
-      <td>235782.0</td>
-      <td>...</td>
-      <td>4100.0</td>
-      <td>7.539341</td>
-      <td>18.900021</td>
-      <td>48.656386</td>
-      <td>48.139807</td>
-      <td>17.758138</td>
-      <td>7.578323</td>
-      <td>64.350968</td>
-      <td>7.539341</td>
-      <td>18.900021</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 232 columns</p>
 </div>
 </div>
 </div>
 <section id="data-splitting" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="data-splitting"><span class="header-section-number">1.4.1</span> Data splitting</h3>
-<section id="dataframe-auf-relevante-spalten-kürzen-und-auf-gemeinde-bzw.-bundesländer-filtern-im-report-können-wir-ja-nur-filterung-auf-gemeinde-drin-lassen.-bund-brauchen-wir-eig.-nicht." class="level5" data-number="1.4.1.0.1">
-<h5 data-number="1.4.1.0.1" class="anchored" data-anchor-id="dataframe-auf-relevante-spalten-kürzen-und-auf-gemeinde-bzw.-bundesländer-filtern-im-report-können-wir-ja-nur-filterung-auf-gemeinde-drin-lassen.-bund-brauchen-wir-eig.-nicht."><span class="header-section-number">1.4.1.0.1</span> Dataframe auf relevante Spalten kürzen und auf Gemeinde bzw. Bundesländer filtern –&gt; Im Report können wir ja nur Filterung auf Gemeinde drin lassen. Bund brauchen wir eig. nicht.</h5>
+<p>Dataframe auf relevante Spalten kürzen und auf Gemeinde filtern.</p>
 <p>Unter Angabe des Spaltenindex filtern wir den Dataframe, sodass wir nur noch die relevanten Spalten erhalten und kopieren diese Werte in ein neues Dataframe df_analyse:</p>
-<p>Mithilfe der .dropna Funktion entfernen wir Zeilen deren relevanten Spalten NaN Werte enthalten.</p>
-<p>Der Grund wieso NaN vorkommt können folgende sein: <br><br> ::: {.callout-note} x y z ::: <br></p>
-<div class="cell" data-execution_count="34">
-<div class="cell-output cell-output-display" data-execution_count="34">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Reg_Hier</th>
-      <th>Arbeitslosenquote</th>
-      <th>Migrationsquote</th>
-      <th>Christenquote</th>
-      <th>Männerquote</th>
-      <th>Akademikerquote</th>
-      <th>Beamtenquote</th>
-      <th>Singlequote</th>
-      <th>Arbeitslosenquote2</th>
-      <th>Migrationsquote2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Deutschland</td>
-      <td>Bund</td>
-      <td>4.652478</td>
-      <td>19.205282</td>
-      <td>59.132542</td>
-      <td>48.798417</td>
-      <td>16.541543</td>
-      <td>5.080131</td>
-      <td>54.203097</td>
-      <td>4.652501</td>
-      <td>19.205282</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Schleswig-Holstein</td>
-      <td>Land</td>
-      <td>4.578416</td>
-      <td>12.024768</td>
-      <td>57.512020</td>
-      <td>48.586649</td>
-      <td>14.198910</td>
-      <td>6.676007</td>
-      <td>54.187161</td>
-      <td>4.578416</td>
-      <td>12.024768</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Flensburg, Stadt</td>
-      <td>Gemeinde</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-      <td>56.027377</td>
-      <td>49.276666</td>
-      <td>13.355639</td>
-      <td>8.378114</td>
-      <td>62.147147</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Flensburg, Stadt</td>
-      <td>Stadtkreis/kreisfreie Stadt/Landkreis</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-      <td>56.027377</td>
-      <td>49.276666</td>
-      <td>13.355639</td>
-      <td>8.378114</td>
-      <td>62.147147</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Kiel, Landeshauptstadt</td>
-      <td>Gemeinde</td>
-      <td>7.539341</td>
-      <td>18.900021</td>
-      <td>48.656386</td>
-      <td>48.139807</td>
-      <td>17.758138</td>
-      <td>7.578323</td>
-      <td>64.350968</td>
-      <td>7.539341</td>
-      <td>18.900021</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>12492</th>
-      <td>Zeulenroda-Triebes, Stadt</td>
-      <td>Gemeinde</td>
-      <td>5.662651</td>
-      <td>3.547963</td>
-      <td>28.863238</td>
-      <td>48.219960</td>
-      <td>12.058824</td>
-      <td>4.342273</td>
-      <td>51.721678</td>
-      <td>5.662651</td>
-      <td>3.613666</td>
-    </tr>
-    <tr>
-      <th>12497</th>
-      <td>Altenburger Land</td>
-      <td>Stadtkreis/kreisfreie Stadt/Landkreis</td>
-      <td>7.879628</td>
-      <td>1.858003</td>
-      <td>17.894911</td>
-      <td>48.803457</td>
-      <td>12.459584</td>
-      <td>3.460133</td>
-      <td>50.574237</td>
-      <td>7.879628</td>
-      <td>1.868383</td>
-    </tr>
-    <tr>
-      <th>12498</th>
-      <td>Altenburg, Stadt</td>
-      <td>Gemeinde</td>
-      <td>9.632751</td>
-      <td>1.978736</td>
-      <td>13.745967</td>
-      <td>47.926078</td>
-      <td>13.866232</td>
-      <td>3.530979</td>
-      <td>53.276621</td>
-      <td>9.632751</td>
-      <td>1.978736</td>
-    </tr>
-    <tr>
-      <th>12500</th>
-      <td>Meuselwitz, Stadt</td>
-      <td>Gemeinde</td>
-      <td>9.363958</td>
-      <td>2.098540</td>
-      <td>11.446552</td>
-      <td>48.403867</td>
-      <td>8.841463</td>
-      <td>3.118908</td>
-      <td>49.872309</td>
-      <td>9.363958</td>
-      <td>2.098540</td>
-    </tr>
-    <tr>
-      <th>12502</th>
-      <td>Schmölln, Stadt</td>
-      <td>Gemeinde</td>
-      <td>6.430868</td>
-      <td>3.710095</td>
-      <td>19.060231</td>
-      <td>48.560444</td>
-      <td>10.587103</td>
-      <td>3.608247</td>
-      <td>51.456642</td>
-      <td>6.430868</td>
-      <td>3.710095</td>
-    </tr>
-  </tbody>
-</table>
-<p>2186 rows × 11 columns</p>
+<div class="cell" data-execution_count="54">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df_analyse <span class="op">=</span> df_bevoelkerung.iloc[:, [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">223</span>,<span class="dv">224</span>,<span class="dv">225</span>,<span class="dv">226</span>,<span class="dv">227</span>,<span class="dv">228</span>,<span class="dv">229</span>]].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+<p>Mithilfe der .dropna Funktion entfernen wir Zeilen deren relevanten Spalten NaN Werte enthalten.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Gründe, weshalb NaN vorkommt können folgende sein:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Daten sind nicht erhoben worden</li>
+<li>Zahlenwert der Erfassung nicht sicher genug</li>
+<li>Aufgrund von Geheimhaltungsverfahren</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<div class="cell" data-execution_count="55">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 12544 entries, 0 to 12543
+Data columns (total 9 columns):
+ #   Column             Non-Null Count  Dtype   
+---  ------             --------------  -----   
+ 0   Name               12544 non-null  category
+ 1   Reg_Hier           12544 non-null  category
+ 2   Arbeitslosenquote  2187 non-null   float64 
+ 3   Migrationsquote    2187 non-null   float64 
+ 4   Christenquote      12544 non-null  float64 
+ 5   Männerquote        12544 non-null  float64 
+ 6   Akademikerquote    2187 non-null   float64 
+ 7   Beamtenquote       2187 non-null   float64 
+ 8   Singlequote        12544 non-null  float64 
+dtypes: category(2), float64(7)
+memory usage: 1.0 MB</code></pre>
 </div>
 </div>
 <p>Liste mit Prädikatoren:</p>
@@ -677,8 +353,8 @@ memory usage: 22.3 MB</code></pre>
 </div>
 </div>
 <p>Dataframe auf Hierarchie-Ebene <strong>Gemeinde</strong> filtern.</p>
-<div class="cell" data-execution_count="37">
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="59">
 
 <div>
 
@@ -695,8 +371,6 @@ memory usage: 22.3 MB</code></pre>
       <th>Akademikerquote</th>
       <th>Beamtenquote</th>
       <th>Singlequote</th>
-      <th>Arbeitslosenquote2</th>
-      <th>Migrationsquote2</th>
     </tr>
   </thead>
   <tbody>
@@ -711,8 +385,6 @@ memory usage: 22.3 MB</code></pre>
       <td>13.355639</td>
       <td>8.378114</td>
       <td>62.147147</td>
-      <td>6.657547</td>
-      <td>15.957447</td>
     </tr>
     <tr>
       <th>1</th>
@@ -725,36 +397,30 @@ memory usage: 22.3 MB</code></pre>
       <td>17.758138</td>
       <td>7.578323</td>
       <td>64.350968</td>
-      <td>7.539341</td>
-      <td>18.900021</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Lübeck, Hansestadt</td>
       <td>Gemeinde</td>
-      <td>7.158110</td>
+      <td>7.167394</td>
       <td>16.812500</td>
       <td>56.723806</td>
       <td>47.470103</td>
       <td>13.992802</td>
       <td>6.540654</td>
       <td>59.120801</td>
-      <td>7.167394</td>
-      <td>16.812500</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Neumünster, Stadt</td>
       <td>Gemeinde</td>
-      <td>6.924644</td>
+      <td>6.899185</td>
       <td>16.924489</td>
       <td>56.149594</td>
       <td>48.816166</td>
       <td>8.385235</td>
       <td>6.015860</td>
       <td>56.965139</td>
-      <td>6.899185</td>
-      <td>16.924489</td>
     </tr>
     <tr>
       <th>4</th>
@@ -767,8 +433,6 @@ memory usage: 22.3 MB</code></pre>
       <td>6.877828</td>
       <td>4.123711</td>
       <td>51.277856</td>
-      <td>5.365854</td>
-      <td>13.682565</td>
     </tr>
     <tr>
       <th>...</th>
@@ -781,11 +445,9 @@ memory usage: 22.3 MB</code></pre>
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>1568</th>
+      <th>1569</th>
       <td>Greiz, Stadt</td>
       <td>Gemeinde</td>
       <td>6.813820</td>
@@ -795,25 +457,21 @@ memory usage: 22.3 MB</code></pre>
       <td>13.745338</td>
       <td>3.089598</td>
       <td>53.023676</td>
-      <td>6.813820</td>
-      <td>2.112338</td>
     </tr>
     <tr>
-      <th>1569</th>
+      <th>1570</th>
       <td>Zeulenroda-Triebes, Stadt</td>
       <td>Gemeinde</td>
       <td>5.662651</td>
-      <td>3.547963</td>
+      <td>3.613666</td>
       <td>28.863238</td>
       <td>48.219960</td>
       <td>12.058824</td>
       <td>4.342273</td>
       <td>51.721678</td>
-      <td>5.662651</td>
-      <td>3.613666</td>
     </tr>
     <tr>
-      <th>1570</th>
+      <th>1571</th>
       <td>Altenburg, Stadt</td>
       <td>Gemeinde</td>
       <td>9.632751</td>
@@ -823,11 +481,9 @@ memory usage: 22.3 MB</code></pre>
       <td>13.866232</td>
       <td>3.530979</td>
       <td>53.276621</td>
-      <td>9.632751</td>
-      <td>1.978736</td>
     </tr>
     <tr>
-      <th>1571</th>
+      <th>1572</th>
       <td>Meuselwitz, Stadt</td>
       <td>Gemeinde</td>
       <td>9.363958</td>
@@ -837,11 +493,9 @@ memory usage: 22.3 MB</code></pre>
       <td>8.841463</td>
       <td>3.118908</td>
       <td>49.872309</td>
-      <td>9.363958</td>
-      <td>2.098540</td>
     </tr>
     <tr>
-      <th>1572</th>
+      <th>1573</th>
       <td>Schmölln, Stadt</td>
       <td>Gemeinde</td>
       <td>6.430868</td>
@@ -851,12 +505,10 @@ memory usage: 22.3 MB</code></pre>
       <td>10.587103</td>
       <td>3.608247</td>
       <td>51.456642</td>
-      <td>6.430868</td>
-      <td>3.710095</td>
     </tr>
   </tbody>
 </table>
-<p>1573 rows × 11 columns</p>
+<p>1574 rows × 9 columns</p>
 </div>
 </div>
 </div>
@@ -892,7 +544,6 @@ memory usage: 465.3 KB</code></pre>
 <p>All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.</p>
 <p>Zur Visualisierung der Beziehungen zwischen Response- und Predictor Variables haben wir uns für die Anwendung von Streudiagrammen bzw. Scatter Plots entschieden. Jeden Prädikator haben wir mit der Arbeitslosenquote2 (bereinigte Arbeitslosenquote) gegegnübergestellt, um erste Erkenntnisse gewinnen zu können (siehe <a href="#sec-EDArel">Section&nbsp;5.3.1</a>). Jedoch ist es anhand der Scatter Plots zunächst schwierig zu erkennen, welcher Prädikator die höchste Korrelation mit der Arbeitslosigkeit aufweist, da die berechneten Variablen unterschiedliche Werte bzw. Verteilungen auf der X-Achse annehmen und kein direkter Vergleich stattfinden kann. <br><br></p>
 <p>Zu erkennen ist, dass lediglich die Variable “Christenquote” eine moderate (über 0,5 bzw. unter -0,5) Korrelation mit der Arbeitslosenquote aufweist. Zwei weitere Quoten, die noch eine leichte bis moderarte Korrelation haben sind die “Singlequote” sowie die “Migrationsquote”.<br><br></p>
-</section>
 </section>
 </section>
 </section>
