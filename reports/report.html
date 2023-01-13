@@ -155,7 +155,7 @@ Fragestellung
 <p>Zur Visualisierung der Beziehungen zwischen Response- und Predictor Variables haben wir uns für die Anwendung von Streudiagrammen bzw. Scatter Plots entschieden. Jeden Prädikator haben wir mit der Arbeitslosenquote2 (bereinigte Arbeitslosenquote) gegegnübergestellt, um erste Erkenntnisse gewinnen zu können (siehe <a href="#sec-EDArel">Section&nbsp;5.3.1</a>). Jedoch ist es anhand der Scatter Plots zunächst schwierig zu erkennen, welcher Prädikator die höchste Korrelation mit der Arbeitslosigkeit aufweist, da die berechneten Variablen unterschiedliche Werte bzw. Verteilungen auf der X-Achse annehmen und kein direkter Vergleich stattfinden kann. <br><br> Zu erkennen ist, dass lediglich die Variable “Christenquote” eine moderate (über 0,5 bzw. unter -0,5) Korrelation mit der Arbeitslosenquote aufweist. Zwei weitere Quoten, die noch eine leichte bis moderarte Korrelation haben sind die “Singlequote” sowie die “Migrationsquote”.<br><br></p>
 <section id="import-relevanter-module" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="import-relevanter-module"><span class="header-section-number">1.1</span> Import relevanter Module</h2>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#import relevant modulues</span></span>
@@ -189,7 +189,7 @@ Fragestellung
 </section>
 <section id="import-datensatz" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="import-datensatz"><span class="header-section-number">1.2</span> Import Datensatz</h2>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df_bevoelkerung <span class="op">=</span> pd.read_csv(</span>
@@ -213,7 +213,7 @@ Fragestellung
 <section id="data-structure" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="data-structure"><span class="header-section-number">1.3</span> Data Structure</h2>
 <p>Um einen ersten groben Überblick zu bekommen, geben wir uns eine Info über unseren Datensatz mit der Pandas-Funktion <code>pd.info()</code> aus.</p>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 12544 entries, 0 to 12543
@@ -231,7 +231,7 @@ memory usage: 21.4+ MB</code></pre>
 <li>/ und - in 0-Werte verwandeln, da diese im engeren Sinne als 0 zählen</li>
 <li>Zahlen in Klammern als normale Zahlen verwandeln</li>
 </ul>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># integers in float verwandeln</span></span>
@@ -245,9 +245,42 @@ memory usage: 21.4+ MB</code></pre>
 <span id="cb4-9"><a href="#cb4-9"></a>    df_bevoelkerung[column]<span class="op">=</span>df_bevoelkerung[column].astype(<span class="bu">str</span>).<span class="bu">str</span>.extract(<span class="st">'(\d+)'</span>).astype(<span class="st">'float64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Die definierten predictor (siehe <a href="#sec-pvar">Section&nbsp;5.2.1</a>)variables müssen im Folgenden noch berechnet werden:</p>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_bevoelkerung[<span class="st">'Arbeitslosenquote'</span>] <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'ERW_1.7'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_1.4'</span>]))<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>df_bevoelkerung[<span class="st">'Migrationsquote'</span>] <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'MIG_1.2'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'MIG_1.1'</span>]))<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>df_bevoelkerung[<span class="st">'Christenquote'</span>] <span class="op">=</span> ((df_bevoelkerung[<span class="st">'REL_1.2'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'REL_1.3'</span>]) </span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="op">/</span> df_bevoelkerung[<span class="st">'REL_1.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>df_bevoelkerung[<span class="st">'Männerquote'</span>] <span class="op">=</span> (df_bevoelkerung[<span class="st">'DEM_1.2'</span>]  <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_1.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>df_bevoelkerung[<span class="st">'Akademikerquote'</span>] <span class="op">=</span> ((df_bevoelkerung[<span class="st">'BIL_5.5'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.6'</span>] </span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.7'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.8'</span>])  <span class="op">/</span> df_bevoelkerung[<span class="st">'BIL_5.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>df_bevoelkerung[<span class="st">'Beamtenquote'</span>] <span class="op">=</span> (df_bevoelkerung[<span class="st">'ERW_2.3'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_2.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>df_bevoelkerung[<span class="st">'Singlequote'</span>] <span class="op">=</span> ((df_bevoelkerung[<span class="st">'DEM_2.4'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.10'</span>] </span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.13'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.19'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.22'</span>] </span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.25'</span>]) <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_2.1'</span>])<span class="op">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:4: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Arbeitslosenquote'] = (1-(df_bevoelkerung['ERW_1.7'] / df_bevoelkerung['ERW_1.4']))*100
+C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:5: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Migrationsquote'] = (1-(df_bevoelkerung['MIG_1.2'] / df_bevoelkerung['MIG_1.1']))*100
+C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:6: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Christenquote'] = ((df_bevoelkerung['REL_1.2'] + df_bevoelkerung['REL_1.3'])
+C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:8: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Männerquote'] = (df_bevoelkerung['DEM_1.2']  / df_bevoelkerung['DEM_1.1'])*100
+C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:9: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Akademikerquote'] = ((df_bevoelkerung['BIL_5.5'] + df_bevoelkerung['BIL_5.6']
+C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:11: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Beamtenquote'] = (df_bevoelkerung['ERW_2.3'] / df_bevoelkerung['ERW_2.1'])*100
+C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:12: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df_bevoelkerung['Singlequote'] = ((df_bevoelkerung['DEM_2.4'] + df_bevoelkerung['DEM_2.10']</code></pre>
+</div>
+</div>
 <p>Anschliessend erfolgt der Check, ob die Anpassung der Zahlen, auf Basis zweier bekannter Gemeinden mit ursprünglich nicht korrekt formatierten Werten, nun korrekt ist:</p>
-<div class="cell" data-execution_count="24">
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
 
 <div>
 
@@ -275,35 +308,14 @@ memory usage: 21.4+ MB</code></pre>
 </div>
 </div>
 </div>
-<p>Die definierten predictor (siehe <a href="#sec-pvar">Section&nbsp;5.2.1</a>)variables müssen im Folgenden noch berechnet werden:</p>
-<div class="cell" data-execution_count="25">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_bevoelkerung <span class="op">=</span> df_bevoelkerung.assign(</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    Arbeitslosenquote <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'ERW_1.7'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_1.4'</span>]))<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    Migrationsquote <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'MIG_1.2'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'MIG_1.1'</span>]))<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb5-4"><a href="#cb5-4"></a>    Christenquote <span class="op">=</span> (</span>
-<span id="cb5-5"><a href="#cb5-5"></a>        (df_bevoelkerung[<span class="st">'REL_1.2'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'REL_1.3'</span>]) </span>
-<span id="cb5-6"><a href="#cb5-6"></a>        <span class="op">/</span> df_bevoelkerung[<span class="st">'REL_1.1'</span>])<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb5-7"><a href="#cb5-7"></a>    Männerquote <span class="op">=</span> ((df_bevoelkerung[<span class="st">'DEM_1.2'</span>]  <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_1.1'</span>])<span class="op">*</span><span class="dv">100</span>),</span>
-<span id="cb5-8"><a href="#cb5-8"></a>    Akademikerquote <span class="op">=</span> (</span>
-<span id="cb5-9"><a href="#cb5-9"></a>        (df_bevoelkerung[<span class="st">'BIL_5.5'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.6'</span>] </span>
-<span id="cb5-10"><a href="#cb5-10"></a>        <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.7'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.8'</span>])  <span class="op">/</span> df_bevoelkerung[<span class="st">'BIL_5.1'</span>])<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb5-11"><a href="#cb5-11"></a>    Beamtenquote <span class="op">=</span> (df_bevoelkerung[<span class="st">'ERW_2.3'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_2.1'</span>])<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb5-12"><a href="#cb5-12"></a>    Singlequote <span class="op">=</span> (</span>
-<span id="cb5-13"><a href="#cb5-13"></a>        (df_bevoelkerung[<span class="st">'DEM_2.4'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.10'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.13'</span>] </span>
-<span id="cb5-14"><a href="#cb5-14"></a>        <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.19'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.22'</span>] </span>
-<span id="cb5-15"><a href="#cb5-15"></a>        <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.25'</span>]) <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_2.1'</span>])<span class="op">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <section id="data-splitting" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="data-splitting"><span class="header-section-number">1.4.1</span> Data splitting</h3>
 <p>Dataframe auf relevante Spalten kürzen und auf Gemeinde filtern.</p>
 <p>Unter Angabe des Spaltenindex filtern wir den Dataframe, sodass wir nur noch die relevanten Spalten erhalten und kopieren diese Werte in ein neues Dataframe <code>df_analyse</code>:</p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df_analyse <span class="op">=</span> df_bevoelkerung.iloc[:, [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">223</span>,<span class="dv">224</span>,<span class="dv">225</span>,<span class="dv">226</span>,<span class="dv">227</span>,<span class="dv">228</span>,<span class="dv">229</span>]].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df_analyse <span class="op">=</span> df_bevoelkerung.iloc[:, [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">223</span>,<span class="dv">224</span>,<span class="dv">225</span>,<span class="dv">226</span>,<span class="dv">227</span>,<span class="dv">228</span>,<span class="dv">229</span>]].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Mithilfe der <code>.dropna</code> Funktion entfernen wir Zeilen deren relevanten Spalten NaN Werte enthalten.</p>
@@ -325,7 +337,7 @@ Gründe, weshalb NaN vorkommt können folgende sein:
 </div>
 </div>
 <p><br></p>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 12544 entries, 0 to 12543
@@ -346,8 +358,8 @@ memory usage: 1.0 MB</code></pre>
 </div>
 </div>
 <p>Dataframe auf Hierarchie-Ebene <strong>Gemeinde</strong> filtern. Neues Dataframe heißt nun <code>df_analyse_gemeinde</code>.</p>
-<div class="cell" data-execution_count="30">
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="13">
 
 <div>
 
@@ -505,7 +517,7 @@ memory usage: 1.0 MB</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 1574 entries, 0 to 1573
@@ -529,26 +541,26 @@ memory usage: 440.7 KB</code></pre>
 <section id="variable-list" class="level3" data-number="1.4.2">
 <h3 data-number="1.4.2" class="anchored" data-anchor-id="variable-list"><span class="header-section-number">1.4.2</span> Variable List</h3>
 <p>Im Folgenden werden die Prädikatoren definiert sowie die Outcome-Variable. Zudem werden die Daten für die Prädikatoren sowie die Outcome-Variable definiert. <br><br> Defintion der Prädiktor-Variablen:</p>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>predictor <span class="op">=</span> df_analyse.iloc[:,<span class="dv">3</span>:<span class="dv">9</span>].columns.values.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>predictor <span class="op">=</span> df_analyse.iloc[:,<span class="dv">3</span>:<span class="dv">9</span>].columns.values.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-splitting-1" class="level3" data-number="1.4.3">
 <h3 data-number="1.4.3" class="anchored" data-anchor-id="data-splitting-1"><span class="header-section-number">1.4.3</span> Data Splitting</h3>
 <p>Für das spätere Modell möchten wir Trainings- und Testdaten. Um die deskriptive und explorative Analyse bereits auf den Trainingsdaten durchzuführen, splitten wir im nächsten Schritt die Daten. Dies machen wir mit der <code>train_test_split</code>-Funktion von scikit-learn.</p>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="17">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, </span>
-<span id="cb10-2"><a href="#cb10-2"></a>                                                    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>                                                    random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, </span>
+<span id="cb11-2"><a href="#cb11-2"></a>                                                    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>                                                    random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="descriptive-analytics" class="level3" data-number="1.4.4">
 <h3 data-number="1.4.4" class="anchored" data-anchor-id="descriptive-analytics"><span class="header-section-number">1.4.4</span> Descriptive Analytics</h3>
-<div class="cell" data-execution_count="36">
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
 
 <div>
 
@@ -651,19 +663,37 @@ memory usage: 440.7 KB</code></pre>
 </div>
 </div>
 </div>
+<p>Die statistischen Werte, die mithilfer der Funktion <code>.describe</code> ausgegeben werden, geben ein erstes Gefühl für die bereingten Daten, welche für die Erstellung der Modelle verwendet werden.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Die Funktion <code>.describe</code> enthält:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Lagemasse (Mittelwert, Median)</li>
+<li>Streuungsmasse (Standardabweichung, Quartile)</li>
+</ul>
+</div>
+</div>
+<p><br></p>
 </section>
 <section id="explorative-analytics" class="level3" data-number="1.4.5">
 <h3 data-number="1.4.5" class="anchored" data-anchor-id="explorative-analytics"><span class="header-section-number">1.4.5</span> Explorative Analytics</h3>
-<div class="cell" data-execution_count="37">
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="20">
 
-<div id="altair-viz-cf87f3f33905484fb4c518d8e04bdb99"></div>
+<div id="altair-viz-95f17a83035a4612ad3bf71fdba60162"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-cf87f3f33905484fb4c518d8e04bdb99") {
-      outputDiv = document.getElementById("altair-viz-cf87f3f33905484fb4c518d8e04bdb99");
+    if (outputDiv.id !== "altair-viz-95f17a83035a4612ad3bf71fdba60162") {
+      outputDiv = document.getElementById("altair-viz-95f17a83035a4612ad3bf71fdba60162");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -716,16 +746,16 @@ memory usage: 440.7 KB</code></pre>
 <p>It should also include some exploratory data analysis.</p>
 <p>All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.</p>
 <p>Zur Visualisierung der Beziehungen zwischen Response- und Predictor Variables haben wir uns für die Anwendung von Streudiagrammen bzw. Scatter Plots entschieden. Jeden Prädikator haben wir mit der Arbeitslosenquote gegegnübergestellt, um erste Erkenntnisse gewinnen zu können (siehe <a href="#sec-EDArel">Section&nbsp;5.3.1</a>). Jedoch ist es anhand der Scatter Plots zunächst schwierig zu erkennen, welcher Prädikator die höchste Korrelation mit der Arbeitslosigkeit aufweist, da die berechneten Variablen unterschiedliche Werte bzw. Verteilungen auf der X-Achse annehmen und kein direkter Vergleich stattfinden kann. <br><br></p>
-<div class="cell" data-execution_count="38">
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="21">
 
-<div id="altair-viz-17e6f2dd8e094cceade1f7987ba961d0"></div>
+<div id="altair-viz-04f525617c58435c9c8130c6b379cade"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-17e6f2dd8e094cceade1f7987ba961d0") {
-      outputDiv = document.getElementById("altair-viz-17e6f2dd8e094cceade1f7987ba961d0");
+    if (outputDiv.id !== "altair-viz-04f525617c58435c9c8130c6b379cade") {
+      outputDiv = document.getElementById("altair-viz-04f525617c58435c9c8130c6b379cade");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -776,7 +806,250 @@ memory usage: 440.7 KB</code></pre>
 </div>
 </div>
 <p>Zu erkennen ist, dass lediglich die Variable “Christenquote” eine moderate (über 0,5 bzw. unter -0,5) Korrelation mit der Arbeitslosenquote aufweist. Zwei weitere Quoten, die noch eine leichte bis moderarte Korrelation haben sind die “Singlequote” sowie die “Migrationsquote”.<br><br></p>
-<div class="cell" data-execution_count="39">
+</section>
+<section id="pearson-correlation-koeffizienten" class="level3" data-number="1.4.6">
+<h3 data-number="1.4.6" class="anchored" data-anchor-id="pearson-correlation-koeffizienten"><span class="header-section-number">1.4.6</span> Pearson Correlation Koeffizienten</h3>
+<div class="cell" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="36">
+
+<style type="text/css">
+#T_5b5f5_row0_col0, #T_5b5f5_row1_col1, #T_5b5f5_row2_col2, #T_5b5f5_row3_col3, #T_5b5f5_row4_col4, #T_5b5f5_row5_col5, #T_5b5f5_row6_col6 {
+  background-color: #08306b;
+  color: #f1f1f1;
+}
+#T_5b5f5_row0_col1, #T_5b5f5_row0_col2, #T_5b5f5_row0_col5, #T_5b5f5_row2_col0, #T_5b5f5_row2_col6, #T_5b5f5_row3_col4, #T_5b5f5_row3_col6, #T_5b5f5_row4_col3, #T_5b5f5_row6_col3 {
+  background-color: #f7fbff;
+  color: #000000;
+}
+#T_5b5f5_row0_col3 {
+  background-color: #eef5fc;
+  color: #000000;
+}
+#T_5b5f5_row0_col4 {
+  background-color: #deebf7;
+  color: #000000;
+}
+#T_5b5f5_row0_col6 {
+  background-color: #5aa2cf;
+  color: #f1f1f1;
+}
+#T_5b5f5_row1_col0 {
+  background-color: #cadef0;
+  color: #000000;
+}
+#T_5b5f5_row1_col2 {
+  background-color: #3c8cc3;
+  color: #f1f1f1;
+}
+#T_5b5f5_row1_col3 {
+  background-color: #d3e3f3;
+  color: #000000;
+}
+#T_5b5f5_row1_col4, #T_5b5f5_row1_col6 {
+  background-color: #b8d5ea;
+  color: #000000;
+}
+#T_5b5f5_row1_col5 {
+  background-color: #d0e1f2;
+  color: #000000;
+}
+#T_5b5f5_row2_col1 {
+  background-color: #5da5d1;
+  color: #f1f1f1;
+}
+#T_5b5f5_row2_col3 {
+  background-color: #abd0e6;
+  color: #000000;
+}
+#T_5b5f5_row2_col4 {
+  background-color: #f2f7fd;
+  color: #000000;
+}
+#T_5b5f5_row2_col5 {
+  background-color: #8abfdd;
+  color: #000000;
+}
+#T_5b5f5_row3_col0 {
+  background-color: #c4daee;
+  color: #000000;
+}
+#T_5b5f5_row3_col1, #T_5b5f5_row5_col3 {
+  background-color: #d5e5f4;
+  color: #000000;
+}
+#T_5b5f5_row3_col2 {
+  background-color: #72b2d8;
+  color: #f1f1f1;
+}
+#T_5b5f5_row3_col5 {
+  background-color: #d9e7f5;
+  color: #000000;
+}
+#T_5b5f5_row4_col0 {
+  background-color: #afd1e7;
+  color: #000000;
+}
+#T_5b5f5_row4_col1, #T_5b5f5_row6_col1 {
+  background-color: #bad6eb;
+  color: #000000;
+}
+#T_5b5f5_row4_col2 {
+  background-color: #c7dcef;
+  color: #000000;
+}
+#T_5b5f5_row4_col5 {
+  background-color: #82bbdb;
+  color: #000000;
+}
+#T_5b5f5_row4_col6 {
+  background-color: #8dc1dd;
+  color: #000000;
+}
+#T_5b5f5_row5_col0 {
+  background-color: #c8dcf0;
+  color: #000000;
+}
+#T_5b5f5_row5_col1 {
+  background-color: #cee0f2;
+  color: #000000;
+}
+#T_5b5f5_row5_col2 {
+  background-color: #57a0ce;
+  color: #f1f1f1;
+}
+#T_5b5f5_row5_col4 {
+  background-color: #7db8da;
+  color: #000000;
+}
+#T_5b5f5_row5_col6 {
+  background-color: #cde0f1;
+  color: #000000;
+}
+#T_5b5f5_row6_col0 {
+  background-color: #3a8ac2;
+  color: #f1f1f1;
+}
+#T_5b5f5_row6_col2 {
+  background-color: #ccdff1;
+  color: #000000;
+}
+#T_5b5f5_row6_col4 {
+  background-color: #8fc2de;
+  color: #000000;
+}
+#T_5b5f5_row6_col5 {
+  background-color: #d1e2f3;
+  color: #000000;
+}
+</style>
+<table id="T_5b5f5">
+  <thead>
+    <tr>
+      <th class="blank level0">&nbsp;</th>
+      <th id="T_5b5f5_level0_col0" class="col_heading level0 col0">Arbeitslosenquote</th>
+      <th id="T_5b5f5_level0_col1" class="col_heading level0 col1">Migrationsquote</th>
+      <th id="T_5b5f5_level0_col2" class="col_heading level0 col2">Christenquote</th>
+      <th id="T_5b5f5_level0_col3" class="col_heading level0 col3">Männerquote</th>
+      <th id="T_5b5f5_level0_col4" class="col_heading level0 col4">Akademikerquote</th>
+      <th id="T_5b5f5_level0_col5" class="col_heading level0 col5">Beamtenquote</th>
+      <th id="T_5b5f5_level0_col6" class="col_heading level0 col6">Singlequote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_5b5f5_level0_row0" class="row_heading level0 row0">Arbeitslosenquote</th>
+      <td id="T_5b5f5_row0_col0" class="data row0 col0">1.000000</td>
+      <td id="T_5b5f5_row0_col1" class="data row0 col1">-0.273260</td>
+      <td id="T_5b5f5_row0_col2" class="data row0 col2">-0.653340</td>
+      <td id="T_5b5f5_row0_col3" class="data row0 col3">-0.231350</td>
+      <td id="T_5b5f5_row0_col4" class="data row0 col4">-0.121500</td>
+      <td id="T_5b5f5_row0_col5" class="data row0 col5">-0.257300</td>
+      <td id="T_5b5f5_row0_col6" class="data row0 col6">0.426140</td>
+    </tr>
+    <tr>
+      <th id="T_5b5f5_level0_row1" class="row_heading level0 row1">Migrationsquote</th>
+      <td id="T_5b5f5_row1_col0" class="data row1 col0">-0.273260</td>
+      <td id="T_5b5f5_row1_col1" class="data row1 col1">1.000000</td>
+      <td id="T_5b5f5_row1_col2" class="data row1 col2">0.417650</td>
+      <td id="T_5b5f5_row1_col3" class="data row1 col3">-0.050460</td>
+      <td id="T_5b5f5_row1_col4" class="data row1 col4">0.093190</td>
+      <td id="T_5b5f5_row1_col5" class="data row1 col5">-0.006110</td>
+      <td id="T_5b5f5_row1_col6" class="data row1 col6">0.093330</td>
+    </tr>
+    <tr>
+      <th id="T_5b5f5_level0_row2" class="row_heading level0 row2">Christenquote</th>
+      <td id="T_5b5f5_row2_col0" class="data row2 col0">-0.653340</td>
+      <td id="T_5b5f5_row2_col1" class="data row2 col1">0.417650</td>
+      <td id="T_5b5f5_row2_col2" class="data row2 col2">1.000000</td>
+      <td id="T_5b5f5_row2_col3" class="data row2 col3">0.142780</td>
+      <td id="T_5b5f5_row2_col4" class="data row2 col4">-0.248540</td>
+      <td id="T_5b5f5_row2_col5" class="data row2 col5">0.275360</td>
+      <td id="T_5b5f5_row2_col6" class="data row2 col6">-0.285430</td>
+    </tr>
+    <tr>
+      <th id="T_5b5f5_level0_row3" class="row_heading level0 row3">Männerquote</th>
+      <td id="T_5b5f5_row3_col0" class="data row3 col0">-0.231350</td>
+      <td id="T_5b5f5_row3_col1" class="data row3 col1">-0.050460</td>
+      <td id="T_5b5f5_row3_col2" class="data row3 col2">0.142780</td>
+      <td id="T_5b5f5_row3_col3" class="data row3 col3">1.000000</td>
+      <td id="T_5b5f5_row3_col4" class="data row3 col4">-0.284900</td>
+      <td id="T_5b5f5_row3_col5" class="data row3 col5">-0.065030</td>
+      <td id="T_5b5f5_row3_col6" class="data row3 col6">-0.287660</td>
+    </tr>
+    <tr>
+      <th id="T_5b5f5_level0_row4" class="row_heading level0 row4">Akademikerquote</th>
+      <td id="T_5b5f5_row4_col0" class="data row4 col0">-0.121500</td>
+      <td id="T_5b5f5_row4_col1" class="data row4 col1">0.093190</td>
+      <td id="T_5b5f5_row4_col2" class="data row4 col2">-0.248540</td>
+      <td id="T_5b5f5_row4_col3" class="data row4 col3">-0.284900</td>
+      <td id="T_5b5f5_row4_col4" class="data row4 col4">1.000000</td>
+      <td id="T_5b5f5_row4_col5" class="data row4 col5">0.301710</td>
+      <td id="T_5b5f5_row4_col6" class="data row4 col6">0.246270</td>
+    </tr>
+    <tr>
+      <th id="T_5b5f5_level0_row5" class="row_heading level0 row5">Beamtenquote</th>
+      <td id="T_5b5f5_row5_col0" class="data row5 col0">-0.257300</td>
+      <td id="T_5b5f5_row5_col1" class="data row5 col1">-0.006110</td>
+      <td id="T_5b5f5_row5_col2" class="data row5 col2">0.275360</td>
+      <td id="T_5b5f5_row5_col3" class="data row5 col3">-0.065030</td>
+      <td id="T_5b5f5_row5_col4" class="data row5 col4">0.301710</td>
+      <td id="T_5b5f5_row5_col5" class="data row5 col5">1.000000</td>
+      <td id="T_5b5f5_row5_col6" class="data row5 col6">-0.014930</td>
+    </tr>
+    <tr>
+      <th id="T_5b5f5_level0_row6" class="row_heading level0 row6">Singlequote</th>
+      <td id="T_5b5f5_row6_col0" class="data row6 col0">0.426140</td>
+      <td id="T_5b5f5_row6_col1" class="data row6 col1">0.093330</td>
+      <td id="T_5b5f5_row6_col2" class="data row6 col2">-0.285430</td>
+      <td id="T_5b5f5_row6_col3" class="data row6 col3">-0.287660</td>
+      <td id="T_5b5f5_row6_col4" class="data row6 col4">0.246270</td>
+      <td id="T_5b5f5_row6_col5" class="data row6 col5">-0.014930</td>
+      <td id="T_5b5f5_row6_col6" class="data row6 col6">1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>Die rechnerische bzw. tabellarische Darstellung des Pearson Korrelationskoeffizienten bestätigt die oben genannten Vermutungen.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Korrelationen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Moderate Korrelation mit der Arbeitslosenquote: <em>Christenquote</em></li>
+<li>Leichte bis moderate Korrelation: <em>Singlequote</em></li>
+<li>äusserst gering: <em>Akademikerquote</em></li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>count    1574.000000
 mean       17.755403
@@ -788,15 +1061,15 @@ min         0.850662
 max        53.982750
 Name: Migrationsquote, dtype: float64</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="56">
 
-<div id="altair-viz-12bdce539977407a827908fae5cd0ced"></div>
+<div id="altair-viz-5953282be1514588badb401f0b94a30b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-12bdce539977407a827908fae5cd0ced") {
-      outputDiv = document.getElementById("altair-viz-12bdce539977407a827908fae5cd0ced");
+    if (outputDiv.id !== "altair-viz-5953282be1514588badb401f0b94a30b") {
+      outputDiv = document.getElementById("altair-viz-5953282be1514588badb401f0b94a30b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -870,119 +1143,119 @@ Name: Migrationsquote, dtype: float64</code></pre>
 <section id="modell-auswahl" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="modell-auswahl"><span class="header-section-number">2.1.1</span> Modell-Auswahl</h3>
 <p>Zunächst werden für die einzelnen Quoten drei Modelle mit jeweils der linearen Regression definiert. Hier greifen wir auch auf scikit-learn zurück und nehmen <code>LinearRegression</code> als Modell.</p>
-<div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>reg_chr <span class="op">=</span> LinearRegression() <span class="co">#für Christenquote</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>reg_mig <span class="op">=</span> LinearRegression() <span class="co">#für Migrationsquote</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>reg_sin <span class="op">=</span> LinearRegression() <span class="co">#für Singlequote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>reg_chr <span class="op">=</span> LinearRegression() <span class="co">#für Christenquote</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>reg_mig <span class="op">=</span> LinearRegression() <span class="co">#für Migrationsquote</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>reg_sin <span class="op">=</span> LinearRegression() <span class="co">#für Singlequote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="training-validation" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="training-validation"><span class="header-section-number">2.1.2</span> Training &amp; Validation</h3>
 <p>Im nächsten Schritt werden die Modelle trainiert und validiert. Dies wird mit der Cross-Validation durchgeführt. Hierbei berechnen wir für jedes Modell den Mean-Squared-Error für je 5 Folds. Hierfür nehmen wir die Funktion <code>cross_val_score</code> und visualisieren das zum einen in einer Tabelle und zum anderen als Liniendiagramm. Hierbei sehen wir, dass die Mean-Squared-Erros je Fold voneinander abweichen, aber die insgesamte Varianz noch in Ordnung ist, was bedeutet, dass die Daten für das Modell geeignet sind.</p>
-<div class="cell" data-execution_count="42">
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="59">
 
 <style type="text/css">
-#T_29aec_row0_col0 {
+#T_38ed6_row0_col0 {
   background-color: #1c6bb0;
   color: #f1f1f1;
 }
-#T_29aec_row0_col1 {
+#T_38ed6_row0_col1 {
   background-color: #eef5fc;
   color: #000000;
 }
-#T_29aec_row0_col2 {
+#T_38ed6_row0_col2 {
   background-color: #5ca4d0;
   color: #f1f1f1;
 }
-#T_29aec_row1_col0 {
+#T_38ed6_row1_col0 {
   background-color: #1c6ab0;
   color: #f1f1f1;
 }
-#T_29aec_row1_col1, #T_29aec_row3_col0, #T_29aec_row3_col2 {
+#T_38ed6_row1_col1, #T_38ed6_row3_col0, #T_38ed6_row3_col2 {
   background-color: #08306b;
   color: #f1f1f1;
 }
-#T_29aec_row1_col2 {
+#T_38ed6_row1_col2 {
   background-color: #1d6cb1;
   color: #f1f1f1;
 }
-#T_29aec_row2_col0, #T_29aec_row2_col1, #T_29aec_row2_col2 {
+#T_38ed6_row2_col0, #T_38ed6_row2_col1, #T_38ed6_row2_col2 {
   background-color: #f7fbff;
   color: #000000;
 }
-#T_29aec_row3_col1 {
+#T_38ed6_row3_col1 {
   background-color: #5fa6d1;
   color: #f1f1f1;
 }
-#T_29aec_row4_col0 {
+#T_38ed6_row4_col0 {
   background-color: #65aad4;
   color: #f1f1f1;
 }
-#T_29aec_row4_col1 {
+#T_38ed6_row4_col1 {
   background-color: #084f99;
   color: #f1f1f1;
 }
-#T_29aec_row4_col2 {
+#T_38ed6_row4_col2 {
   background-color: #2979b9;
   color: #f1f1f1;
 }
 </style>
-<table id="T_29aec">
+<table id="T_38ed6">
   <thead>
     <tr>
       <th class="blank level0">&nbsp;</th>
-      <th id="T_29aec_level0_col0" class="col_heading level0 col0">lr_mig</th>
-      <th id="T_29aec_level0_col1" class="col_heading level0 col1">lr_chr</th>
-      <th id="T_29aec_level0_col2" class="col_heading level0 col2">lr_sin</th>
+      <th id="T_38ed6_level0_col0" class="col_heading level0 col0">lr_mig</th>
+      <th id="T_38ed6_level0_col1" class="col_heading level0 col1">lr_chr</th>
+      <th id="T_38ed6_level0_col2" class="col_heading level0 col2">lr_sin</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_29aec_level0_row0" class="row_heading level0 row0">1</th>
-      <td id="T_29aec_row0_col0" class="data row0 col0">4.195897</td>
-      <td id="T_29aec_row0_col1" class="data row0 col1">2.222005</td>
-      <td id="T_29aec_row0_col2" class="data row0 col2">3.502820</td>
+      <th id="T_38ed6_level0_row0" class="row_heading level0 row0">1</th>
+      <td id="T_38ed6_row0_col0" class="data row0 col0">4.195897</td>
+      <td id="T_38ed6_row0_col1" class="data row0 col1">2.222005</td>
+      <td id="T_38ed6_row0_col2" class="data row0 col2">3.502820</td>
     </tr>
     <tr>
-      <th id="T_29aec_level0_row1" class="row_heading level0 row1">2</th>
-      <td id="T_29aec_row1_col0" class="data row1 col0">4.199023</td>
-      <td id="T_29aec_row1_col1" class="data row1 col1">2.844424</td>
-      <td id="T_29aec_row1_col2" class="data row1 col2">3.770871</td>
+      <th id="T_38ed6_level0_row1" class="row_heading level0 row1">2</th>
+      <td id="T_38ed6_row1_col0" class="data row1 col0">4.199023</td>
+      <td id="T_38ed6_row1_col1" class="data row1 col1">2.844424</td>
+      <td id="T_38ed6_row1_col2" class="data row1 col2">3.770871</td>
     </tr>
     <tr>
-      <th id="T_29aec_level0_row2" class="row_heading level0 row2">3</th>
-      <td id="T_29aec_row2_col0" class="data row2 col0">3.451805</td>
-      <td id="T_29aec_row2_col1" class="data row2 col1">2.189314</td>
-      <td id="T_29aec_row2_col2" class="data row2 col2">2.852882</td>
+      <th id="T_38ed6_level0_row2" class="row_heading level0 row2">3</th>
+      <td id="T_38ed6_row2_col0" class="data row2 col0">3.451805</td>
+      <td id="T_38ed6_row2_col1" class="data row2 col1">2.189314</td>
+      <td id="T_38ed6_row2_col2" class="data row2 col2">2.852882</td>
     </tr>
     <tr>
-      <th id="T_29aec_level0_row3" class="row_heading level0 row3">4</th>
-      <td id="T_29aec_row3_col0" class="data row3 col0">4.414557</td>
-      <td id="T_29aec_row3_col1" class="data row3 col1">2.539975</td>
-      <td id="T_29aec_row3_col2" class="data row3 col2">4.048354</td>
+      <th id="T_38ed6_level0_row3" class="row_heading level0 row3">4</th>
+      <td id="T_38ed6_row3_col0" class="data row3 col0">4.414557</td>
+      <td id="T_38ed6_row3_col1" class="data row3 col1">2.539975</td>
+      <td id="T_38ed6_row3_col2" class="data row3 col2">4.048354</td>
     </tr>
     <tr>
-      <th id="T_29aec_level0_row4" class="row_heading level0 row4">5</th>
-      <td id="T_29aec_row4_col0" class="data row4 col0">3.951385</td>
-      <td id="T_29aec_row4_col1" class="data row4 col1">2.765169</td>
-      <td id="T_29aec_row4_col2" class="data row4 col2">3.716738</td>
+      <th id="T_38ed6_level0_row4" class="row_heading level0 row4">5</th>
+      <td id="T_38ed6_row4_col0" class="data row4 col0">3.951385</td>
+      <td id="T_38ed6_row4_col1" class="data row4 col1">2.765169</td>
+      <td id="T_38ed6_row4_col2" class="data row4 col2">3.716738</td>
     </tr>
   </tbody>
 </table>
 </div>
 </div>
 <p>Code Beispiel 42 - Vergleiche Cross Validation Erklärung</p>
-<div class="cell" data-execution_count="43">
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="60">
 
-<div id="altair-viz-16d23bc87cb740a68a7f8247c32c3464"></div>
+<div id="altair-viz-0cd0a8af70fb4e6690e51918c424aee7"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-16d23bc87cb740a68a7f8247c32c3464") {
-      outputDiv = document.getElementById("altair-viz-16d23bc87cb740a68a7f8247c32c3464");
+    if (outputDiv.id !== "altair-viz-0cd0a8af70fb4e6690e51918c424aee7") {
+      outputDiv = document.getElementById("altair-viz-0cd0a8af70fb4e6690e51918c424aee7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1028,12 +1301,12 @@ Name: Migrationsquote, dtype: float64</code></pre>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "repeat": {"layer": ["lr_mig", "lr_chr", "lr_sin"]}, "spec": {"data": {"name": "data-5afaa39d1be07cac625f8acbce72c50a"}, "mark": {"type": "line", "point": {}}, "encoding": {"color": {"datum": {"repeat": "layer"}}, "x": {"axis": {"tickCount": 5}, "bin": false, "field": "index", "title": "Fold", "type": "quantitative"}, "y": {"aggregate": "mean", "field": {"repeat": "layer"}, "title": "Mean squared error (MSE)"}}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-5afaa39d1be07cac625f8acbce72c50a": [{"index": 1, "lr_mig": 4.195897440574532, "lr_chr": 2.222004898334667, "lr_sin": 3.502819764372729}, {"index": 2, "lr_mig": 4.199023185601051, "lr_chr": 2.8444240723827847, "lr_sin": 3.770871265082208}, {"index": 3, "lr_mig": 3.4518048361222835, "lr_chr": 2.189313634822344, "lr_sin": 2.8528819536676604}, {"index": 4, "lr_mig": 4.414557156548028, "lr_chr": 2.5399746005635206, "lr_sin": 4.048354474178797}, {"index": 5, "lr_mig": 3.9513850908422836, "lr_chr": 2.7651693352105085, "lr_sin": 3.7167380666149397}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "repeat": {"layer": ["lr_mig", "lr_chr", "lr_sin"]}, "spec": {"data": {"name": "data-c5b5fdb424eb905b568b684d5aa3b71e"}, "mark": {"type": "line", "point": {}}, "encoding": {"color": {"datum": {"repeat": "layer"}}, "x": {"axis": {"tickCount": 5}, "bin": false, "field": "index", "title": "Fold", "type": "quantitative"}, "y": {"aggregate": "mean", "field": {"repeat": "layer"}, "title": "Mean squared error (MSE)"}}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-c5b5fdb424eb905b568b684d5aa3b71e": [{"index": 1, "lr_mig": 4.195897440574531, "lr_chr": 2.222004898334667, "lr_sin": 3.5028197643727284}, {"index": 2, "lr_mig": 4.199023185601051, "lr_chr": 2.8444240723827847, "lr_sin": 3.770871265082208}, {"index": 3, "lr_mig": 3.4518048361222835, "lr_chr": 2.189313634822344, "lr_sin": 2.85288195366766}, {"index": 4, "lr_mig": 4.414557156548027, "lr_chr": 2.5399746005635206, "lr_sin": 4.048354474178798}, {"index": 5, "lr_mig": 3.9513850908422827, "lr_chr": 2.7651693352105085, "lr_sin": 3.7167380666149397}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
-<div class="cell" data-execution_count="44">
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="61">
 
 <div>
 
@@ -1094,39 +1367,9 @@ Name: Migrationsquote, dtype: float64</code></pre>
 <section id="fit-model" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="fit-model"><span class="header-section-number">2.1.3</span> Fit Model</h3>
 <p>Im nächsten Schritt möchten wir das Modell an die Trainingsdaten anpassen und den y-Achsenabschnitt sowie die Steigung berechnen. Hierfür nutzen wir die <code>.fit</code> Funktion.</p>
-<p>Migrationsquote:</p>
-<div class="cell" data-execution_count="46">
-<div class="cell-output cell-output-display" data-execution_count="46">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Coefficient</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Intercept</td>
-      <td>5.293</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>slope</td>
-      <td>-0.062</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
 <p>Christenquote:</p>
-<div class="cell" data-execution_count="47">
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="64">
 
 <div>
 
@@ -1148,36 +1391,6 @@ Name: Migrationsquote, dtype: float64</code></pre>
       <th>1</th>
       <td>slope</td>
       <td>-0.065</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<p>Singlequote</p>
-<div class="cell" data-execution_count="48">
-<div class="cell-output cell-output-display" data-execution_count="48">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Coefficient</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Intercept</td>
-      <td>-11.377</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>slope</td>
-      <td>0.298</td>
     </tr>
   </tbody>
 </table>
@@ -1220,7 +1433,7 @@ Name: Migrationsquote, dtype: float64</code></pre>
 <h1 data-number="5"><span class="header-section-number">5</span> Appendix</h1>
 <section id="sec-app_df" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-app_df"><span class="header-section-number">5.1</span> Appendix df_bevoelkerung</h2>
-<div class="cell" data-execution_count="49">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 12544 entries, 0 to 12543
@@ -1461,8 +1674,8 @@ dtypes: category(8), float64(222)
 memory usage: 22.1 MB</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
-<div class="cell-output cell-output-display" data-execution_count="50">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="67">
 <div id="tbl-erste10" class="anchored">
 
 <div>
@@ -1742,8 +1955,8 @@ memory usage: 22.1 MB</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="68">
 <div id="tbl-letzte10" class="anchored">
 
 <div>
@@ -2028,23 +2241,23 @@ memory usage: 22.1 MB</code></pre>
 <h2 data-number="5.2" class="anchored" data-anchor-id="appendix-predictor-variables"><span class="header-section-number">5.2</span> Appendix Predictor Variables</h2>
 <section id="sec-pvar" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-pvar"><span class="header-section-number">5.2.1</span> Predictor Variables</h3>
-<div class="cell" data-execution_count="53">
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell">
+<div class="cell-output cell-output-display" data-execution_count="70">
 
 <style type="text/css">
-#T_b2335 th {
+#T_38807 th {
   text-align: left;
 }
-#T_b2335_row0_col0, #T_b2335_row0_col1, #T_b2335_row1_col0, #T_b2335_row1_col1, #T_b2335_row2_col0, #T_b2335_row2_col1, #T_b2335_row3_col0, #T_b2335_row3_col1, #T_b2335_row4_col0, #T_b2335_row4_col1, #T_b2335_row5_col0, #T_b2335_row5_col1 {
+#T_38807_row0_col0, #T_38807_row0_col1, #T_38807_row1_col0, #T_38807_row1_col1, #T_38807_row2_col0, #T_38807_row2_col1, #T_38807_row3_col0, #T_38807_row3_col1, #T_38807_row4_col0, #T_38807_row4_col1, #T_38807_row5_col0, #T_38807_row5_col1 {
   text-align: left;
 }
 </style>
-<table id="T_b2335">
+<table id="T_38807">
   <thead>
     <tr>
       <th class="blank level0">&nbsp;</th>
-      <th id="T_b2335_level0_col0" class="col_heading level0 col0">Quote</th>
-      <th id="T_b2335_level0_col1" class="col_heading level0 col1">Berechnung</th>
+      <th id="T_38807_level0_col0" class="col_heading level0 col0">Quote</th>
+      <th id="T_38807_level0_col1" class="col_heading level0 col1">Berechnung</th>
     </tr>
     <tr>
       <th class="index_name level0">Variable</th>
@@ -2054,34 +2267,34 @@ memory usage: 22.1 MB</code></pre>
   </thead>
   <tbody>
     <tr>
-      <th id="T_b2335_level0_row0" class="row_heading level0 row0">Migrationshintergrund</th>
-      <td id="T_b2335_row0_col0" class="data row0 col0">Migrationsquote</td>
-      <td id="T_b2335_row0_col1" class="data row0 col1">(Anzahl Personen mit Migrationshintergrund / Anzahl Personen insgesamt)</td>
+      <th id="T_38807_level0_row0" class="row_heading level0 row0">Migrationshintergrund</th>
+      <td id="T_38807_row0_col0" class="data row0 col0">Migrationsquote</td>
+      <td id="T_38807_row0_col1" class="data row0 col1">(Anzahl Personen mit Migrationshintergrund / Anzahl Personen insgesamt)</td>
     </tr>
     <tr>
-      <th id="T_b2335_level0_row1" class="row_heading level0 row1">Religionszugehörigkeit</th>
-      <td id="T_b2335_row1_col0" class="data row1 col0">Christenquote*</td>
-      <td id="T_b2335_row1_col1" class="data row1 col1">(Römisch-katholische Kirche + Evangelische Kirch) / Bevölkerung nach Religion gesamt</td>
+      <th id="T_38807_level0_row1" class="row_heading level0 row1">Religionszugehörigkeit</th>
+      <td id="T_38807_row1_col0" class="data row1 col0">Christenquote*</td>
+      <td id="T_38807_row1_col1" class="data row1 col1">(Römisch-katholische Kirche + Evangelische Kirch) / Bevölkerung nach Religion gesamt</td>
     </tr>
     <tr>
-      <th id="T_b2335_level0_row2" class="row_heading level0 row2">Geschlecht</th>
-      <td id="T_b2335_row2_col0" class="data row2 col0">Männerquote</td>
-      <td id="T_b2335_row2_col1" class="data row2 col1">(Anzahl Männer / Einwohner gesamt)</td>
+      <th id="T_38807_level0_row2" class="row_heading level0 row2">Geschlecht</th>
+      <td id="T_38807_row2_col0" class="data row2 col0">Männerquote</td>
+      <td id="T_38807_row2_col1" class="data row2 col1">(Anzahl Männer / Einwohner gesamt)</td>
     </tr>
     <tr>
-      <th id="T_b2335_level0_row3" class="row_heading level0 row3">Bildungsniveau</th>
-      <td id="T_b2335_row3_col0" class="data row3 col0">Akademikerquote**</td>
-      <td id="T_b2335_row3_col1" class="data row3 col1">(Fach- oder Berufsakademie + FH-Abschluss + Hochschulabschluss + Promotion) / höchster beruflicher Abschluss insgesamt</td>
+      <th id="T_38807_level0_row3" class="row_heading level0 row3">Bildungsniveau</th>
+      <td id="T_38807_row3_col0" class="data row3 col0">Akademikerquote**</td>
+      <td id="T_38807_row3_col1" class="data row3 col1">(Fach- oder Berufsakademie + FH-Abschluss + Hochschulabschluss + Promotion) / höchster beruflicher Abschluss insgesamt</td>
     </tr>
     <tr>
-      <th id="T_b2335_level0_row4" class="row_heading level0 row4">Stellung im Beruf</th>
-      <td id="T_b2335_row4_col0" class="data row4 col0">Beamtenquote</td>
-      <td id="T_b2335_row4_col1" class="data row4 col1">(Anzahl Beamter / Erwerbstätige insgesamt)</td>
+      <th id="T_38807_level0_row4" class="row_heading level0 row4">Stellung im Beruf</th>
+      <td id="T_38807_row4_col0" class="data row4 col0">Beamtenquote</td>
+      <td id="T_38807_row4_col1" class="data row4 col1">(Anzahl Beamter / Erwerbstätige insgesamt)</td>
     </tr>
     <tr>
-      <th id="T_b2335_level0_row5" class="row_heading level0 row5">Familienstand</th>
-      <td id="T_b2335_row5_col0" class="data row5 col0">Singlequote***</td>
-      <td id="T_b2335_row5_col1" class="data row5 col1">(Anzahl Lediger + Verwitwete + Geschiedene + eingetragene Lebenspartnerschaft aufgehoben + Eingetragener Lebenspartner/- in verstorben + ohne Angaben) / Familienstand gesamt</td>
+      <th id="T_38807_level0_row5" class="row_heading level0 row5">Familienstand</th>
+      <td id="T_38807_row5_col0" class="data row5 col0">Singlequote***</td>
+      <td id="T_38807_row5_col1" class="data row5 col1">(Anzahl Lediger + Verwitwete + Geschiedene + eingetragene Lebenspartnerschaft aufgehoben + Eingetragener Lebenspartner/- in verstorben + ohne Angaben) / Familienstand gesamt</td>
     </tr>
   </tbody>
 </table>
