@@ -245,42 +245,9 @@ memory usage: 21.4+ MB</code></pre>
 <span id="cb4-9"><a href="#cb4-9"></a>    df_bevoelkerung[column]<span class="op">=</span>df_bevoelkerung[column].astype(<span class="bu">str</span>).<span class="bu">str</span>.extract(<span class="st">'(\d+)'</span>).astype(<span class="st">'float64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Die definierten predictor (siehe <a href="#sec-pvar">Section&nbsp;5.2.1</a>)variables müssen im Folgenden noch berechnet werden:</p>
-<div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_bevoelkerung[<span class="st">'Arbeitslosenquote'</span>] <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'ERW_1.7'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_1.4'</span>]))<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>df_bevoelkerung[<span class="st">'Migrationsquote'</span>] <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'MIG_1.2'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'MIG_1.1'</span>]))<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>df_bevoelkerung[<span class="st">'Christenquote'</span>] <span class="op">=</span> ((df_bevoelkerung[<span class="st">'REL_1.2'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'REL_1.3'</span>]) </span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="op">/</span> df_bevoelkerung[<span class="st">'REL_1.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>df_bevoelkerung[<span class="st">'Männerquote'</span>] <span class="op">=</span> (df_bevoelkerung[<span class="st">'DEM_1.2'</span>]  <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_1.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>df_bevoelkerung[<span class="st">'Akademikerquote'</span>] <span class="op">=</span> ((df_bevoelkerung[<span class="st">'BIL_5.5'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.6'</span>] </span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.7'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.8'</span>])  <span class="op">/</span> df_bevoelkerung[<span class="st">'BIL_5.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>df_bevoelkerung[<span class="st">'Beamtenquote'</span>] <span class="op">=</span> (df_bevoelkerung[<span class="st">'ERW_2.3'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_2.1'</span>])<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>df_bevoelkerung[<span class="st">'Singlequote'</span>] <span class="op">=</span> ((df_bevoelkerung[<span class="st">'DEM_2.4'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.10'</span>] </span>
-<span id="cb5-10"><a href="#cb5-10"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.13'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.19'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.22'</span>] </span>
-<span id="cb5-11"><a href="#cb5-11"></a>    <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.25'</span>]) <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_2.1'</span>])<span class="op">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:4: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Arbeitslosenquote'] = (1-(df_bevoelkerung['ERW_1.7'] / df_bevoelkerung['ERW_1.4']))*100
-C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:5: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Migrationsquote'] = (1-(df_bevoelkerung['MIG_1.2'] / df_bevoelkerung['MIG_1.1']))*100
-C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:6: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Christenquote'] = ((df_bevoelkerung['REL_1.2'] + df_bevoelkerung['REL_1.3'])
-C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:8: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Männerquote'] = (df_bevoelkerung['DEM_1.2']  / df_bevoelkerung['DEM_1.1'])*100
-C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:9: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Akademikerquote'] = ((df_bevoelkerung['BIL_5.5'] + df_bevoelkerung['BIL_5.6']
-C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:11: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Beamtenquote'] = (df_bevoelkerung['ERW_2.3'] / df_bevoelkerung['ERW_2.1'])*100
-C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:12: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_bevoelkerung['Singlequote'] = ((df_bevoelkerung['DEM_2.4'] + df_bevoelkerung['DEM_2.10']</code></pre>
-</div>
-</div>
 <p>Anschliessend erfolgt der Check, ob die Anpassung der Zahlen, auf Basis zweier bekannter Gemeinden mit ursprünglich nicht korrekt formatierten Werten, nun korrekt ist:</p>
-<div class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell">
+<div class="cell-output cell-output-display">
 
 <div>
 
@@ -308,6 +275,27 @@ C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:12: PerformanceW
 </div>
 </div>
 </div>
+<p>Die definierten predictor (siehe <a href="#sec-pvar">Section&nbsp;5.2.1</a>)variables müssen im Folgenden noch berechnet werden:</p>
+<div class="cell" data-execution_count="72">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_bevoelkerung <span class="op">=</span> df_bevoelkerung.assign(</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    Arbeitslosenquote <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'ERW_1.7'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_1.4'</span>]))<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    Migrationsquote <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>(df_bevoelkerung[<span class="st">'MIG_1.2'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'MIG_1.1'</span>]))<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    Christenquote <span class="op">=</span> (</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        (df_bevoelkerung[<span class="st">'REL_1.2'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'REL_1.3'</span>]) </span>
+<span id="cb5-6"><a href="#cb5-6"></a>        <span class="op">/</span> df_bevoelkerung[<span class="st">'REL_1.1'</span>])<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    Männerquote <span class="op">=</span> ((df_bevoelkerung[<span class="st">'DEM_1.2'</span>]  <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_1.1'</span>])<span class="op">*</span><span class="dv">100</span>),</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    Akademikerquote <span class="op">=</span> (</span>
+<span id="cb5-9"><a href="#cb5-9"></a>        (df_bevoelkerung[<span class="st">'BIL_5.5'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.6'</span>] </span>
+<span id="cb5-10"><a href="#cb5-10"></a>        <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.7'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'BIL_5.8'</span>])  <span class="op">/</span> df_bevoelkerung[<span class="st">'BIL_5.1'</span>])<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    Beamtenquote <span class="op">=</span> (df_bevoelkerung[<span class="st">'ERW_2.3'</span>] <span class="op">/</span> df_bevoelkerung[<span class="st">'ERW_2.1'</span>])<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    Singlequote <span class="op">=</span> (</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        (df_bevoelkerung[<span class="st">'DEM_2.4'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.10'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.13'</span>] </span>
+<span id="cb5-14"><a href="#cb5-14"></a>        <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.19'</span>] <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.22'</span>] </span>
+<span id="cb5-15"><a href="#cb5-15"></a>        <span class="op">+</span> df_bevoelkerung[<span class="st">'DEM_2.25'</span>]) <span class="op">/</span> df_bevoelkerung[<span class="st">'DEM_2.1'</span>])<span class="op">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <section id="data-splitting" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="data-splitting"><span class="header-section-number">1.4.1</span> Data splitting</h3>
 <p>Dataframe auf relevante Spalten kürzen und auf Gemeinde filtern.</p>
@@ -315,7 +303,7 @@ C:\Users\NGE02\AppData\Local\Temp\ipykernel_11476\3043228337.py:12: PerformanceW
 <div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df_analyse <span class="op">=</span> df_bevoelkerung.iloc[:, [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">223</span>,<span class="dv">224</span>,<span class="dv">225</span>,<span class="dv">226</span>,<span class="dv">227</span>,<span class="dv">228</span>,<span class="dv">229</span>]].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df_analyse <span class="op">=</span> df_bevoelkerung.iloc[:, [<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">223</span>,<span class="dv">224</span>,<span class="dv">225</span>,<span class="dv">226</span>,<span class="dv">227</span>,<span class="dv">228</span>,<span class="dv">229</span>]].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Mithilfe der <code>.dropna</code> Funktion entfernen wir Zeilen deren relevanten Spalten NaN Werte enthalten.</p>
@@ -542,7 +530,7 @@ memory usage: 440.7 KB</code></pre>
 <h3 data-number="1.4.2" class="anchored" data-anchor-id="variable-list"><span class="header-section-number">1.4.2</span> Variable List</h3>
 <p>Im Folgenden werden die Prädikatoren definiert sowie die Outcome-Variable. Zudem werden die Daten für die Prädikatoren sowie die Outcome-Variable definiert. <br><br> Defintion der Prädiktor-Variablen:</p>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>predictor <span class="op">=</span> df_analyse.iloc[:,<span class="dv">3</span>:<span class="dv">9</span>].columns.values.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>predictor <span class="op">=</span> df_analyse.iloc[:,<span class="dv">3</span>:<span class="dv">9</span>].columns.values.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-splitting-1" class="level3" data-number="1.4.3">
@@ -551,9 +539,9 @@ memory usage: 440.7 KB</code></pre>
 <div class="cell" data-execution_count="17">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, </span>
-<span id="cb11-2"><a href="#cb11-2"></a>                                                    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb11-3"><a href="#cb11-3"></a>                                                    random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, </span>
+<span id="cb10-2"><a href="#cb10-2"></a>                                                    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                                                    random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1074,9 +1062,9 @@ Korrelationen
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="modell-auswahl"><span class="header-section-number">2.1.1</span> Modell-Auswahl</h3>
 <p>Zunächst werden für die einzelnen Quoten drei Modelle mit jeweils der linearen Regression definiert. Hier greifen wir auch auf scikit-learn zurück und nehmen <code>LinearRegression</code> als Modell.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>reg_chr <span class="op">=</span> LinearRegression() <span class="co">#für Christenquote</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>reg_mig <span class="op">=</span> LinearRegression() <span class="co">#für Migrationsquote</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>reg_sin <span class="op">=</span> LinearRegression() <span class="co">#für Singlequote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>reg_chr <span class="op">=</span> LinearRegression() <span class="co">#für Christenquote</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>reg_mig <span class="op">=</span> LinearRegression() <span class="co">#für Migrationsquote</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>reg_sin <span class="op">=</span> LinearRegression() <span class="co">#für Singlequote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="training-validation" class="level3" data-number="2.1.2">
