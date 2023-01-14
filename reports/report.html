@@ -2647,6 +2647,9 @@ vertical-align: -.125em;
   <li><a href="#lasso-regression" id="toc-lasso-regression" class="nav-link" data-scroll-target="#lasso-regression"><span class="toc-section-number">2.3</span>  Lasso Regression</a>
   <ul class="collapse">
   <li><a href="#modell-auswahl-2" id="toc-modell-auswahl-2" class="nav-link" data-scroll-target="#modell-auswahl-2"><span class="toc-section-number">2.3.1</span>  Modell-Auswahl</a></li>
+  <li><a href="#training-best-alpha" id="toc-training-best-alpha" class="nav-link" data-scroll-target="#training-best-alpha"><span class="toc-section-number">2.3.2</span>  Training &amp; best alpha</a></li>
+  <li><a href="#fit-model-2" id="toc-fit-model-2" class="nav-link" data-scroll-target="#fit-model-2"><span class="toc-section-number">2.3.3</span>  Fit Model</a></li>
+  <li><a href="#evaluation-on-test-set-2" id="toc-evaluation-on-test-set-2" class="nav-link" data-scroll-target="#evaluation-on-test-set-2"><span class="toc-section-number">2.3.4</span>  Evaluation on test set</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="toc-section-number">3</span>  Results</a></li>
@@ -4329,6 +4332,146 @@ Erkenntnis
 <h2 data-number="2.3" class="anchored" data-anchor-id="lasso-regression"><span class="header-section-number">2.3</span> Lasso Regression</h2>
 <section id="modell-auswahl-2" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="modell-auswahl-2"><span class="header-section-number">2.3.1</span> Modell-Auswahl</h3>
+<p>Bei der Lasso Regression ist es zuerst notwendig, die Variablen zu standardisieren, da Lasso am Besten performt, wenn die Features um den Wert 0 zentriert sind. Für diese Standardisierung definieren wir zuerst mit der <code>StandardScaler().fit</code>-Funktion unseren Skalierer. Diese scikit-learn Funktion entfernt den Mittelwert und skaliert jedes Feature auf eine Einheitsvarianz. Das wird für jedes Feature getrennt durchgeführt. Im nächsten Schritt transformieren wir unsere Trainings- und Testdaten mit diesem Skalierer. Für die Berechnung des alpha-Wertes für Lasso Regression nehmen wir von scikit-learn die <code>LassoCV</code>-Funktion, welche bereits eine Cross-Validation integriert.</p>
+<div class="cell" data-execution_count="246">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>X_train_lasso <span class="op">=</span> X_train.copy()</span>
+<span id="cb15-2"><a href="#cb15-2"></a>X_test_lasso <span class="op">=</span> X_test.copy()</span>
+<span id="cb15-3"><a href="#cb15-3"></a>scaler <span class="op">=</span> StandardScaler().fit(X_train[features]) </span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>X_train_lasso[features] <span class="op">=</span> scaler.transform(X_train_lasso[features])</span>
+<span id="cb15-6"><a href="#cb15-6"></a>X_test_lasso[features] <span class="op">=</span> scaler.transform(X_test_lasso[features])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="247">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># select the lasso model with built in crossvalidation</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>reg_lasso <span class="op">=</span> LassoCV(cv<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="training-best-alpha" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="training-best-alpha"><span class="header-section-number">2.3.2</span> Training &amp; best alpha</h3>
+<p>Die <code>LassoCV</code>-Funktion hat wie bereits erwähnt, die Cross Validation integriert. Somit ermittelt das Model für uns den bestmöglichen Alpha-Wert um die Regression durchzuführen. Nachdem wir unser Modell trainiert haben, können wir uns mit <code>.alpha_</code> den bestmöglichen Alpha-Wert ausgeben lassen.</p>
+<div class="cell" data-execution_count="248">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>reg_lasso.fit(X_train_lasso, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="249">
+<div class="cell-output cell-output-display" data-execution_count="249">
+<pre><code>0.00730882363957819</code></pre>
+</div>
+</div>
+</section>
+<section id="fit-model-2" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="fit-model-2"><span class="header-section-number">2.3.3</span> Fit Model</h3>
+<p>Anschließend nutzen wir den besten Wert für Alpha um die Lasso Regression damit durchzuführen. Dafür definieren wir für die Regression das alpha.</p>
+<div class="cell" data-execution_count="251">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Fit the model to the complete training data</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>lasso_best <span class="op">=</span> Lasso(alpha<span class="op">=</span>reg_lasso.alpha_)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>lasso_best.fit(X_train_lasso, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="259">
+<div class="cell-output cell-output-display" data-execution_count="259">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Coefficient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Intercept</td>
+      <td>4.201</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Migrationsquote</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Christenquote</td>
+      <td>-1.373</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Männerquote</td>
+      <td>-0.353</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Akademikerquote</td>
+      <td>-0.856</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Beamtenquote</td>
+      <td>0.060</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Singlequote</td>
+      <td>0.609</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluation-on-test-set-2" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="evaluation-on-test-set-2"><span class="header-section-number">2.3.4</span> Evaluation on test set</h3>
+<p>Wie in den vorherigen beiden Modellen evaluieren wir unser Modell mit den Test-Daten und prognostizieren Werte.</p>
+<p>Für die prognostizierten Werte berechnen wir Gütemaße, wie den R-squared (R2), den Mean-Squared-Error (MSE), den Rooted-Mean-Squared-Error (RMSE) sowie den Mean-Absolute-Error (MAE).</p>
+<div class="cell" data-execution_count="262">
+<div class="cell-output cell-output-display" data-execution_count="262">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Christenquote</th>
+      <th>MultipleRegression</th>
+      <th>Lasso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>R2</th>
+      <td>0.418</td>
+      <td>0.625</td>
+      <td>0.625</td>
+    </tr>
+    <tr>
+      <th>MSE</th>
+      <td>2.613</td>
+      <td>1.683</td>
+      <td>1.686</td>
+    </tr>
+    <tr>
+      <th>RMSE</th>
+      <td>1.616</td>
+      <td>1.297</td>
+      <td>1.298</td>
+    </tr>
+    <tr>
+      <th>MAE</th>
+      <td>1.194</td>
+      <td>0.974</td>
+      <td>0.973</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
