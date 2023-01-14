@@ -3590,7 +3590,7 @@ Korrelationen
 </section>
 </section>
 </section>
-<section id="methodology" class="level1" data-number="2">
+<section id="methodology" class="level1 page-columns page-full" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Methodology</h1>
 <blockquote class="blockquote">
 <p>REMOVE THE FOLLOWING TEXT</p>
@@ -3606,7 +3606,7 @@ Korrelationen
 <p>Der abschließende Schritt war die Evaluierung mit den Test-Daten. Wir haben die Modell dann anhand verschiedener Gütemaße (R^2, MSE, RMSE, MAE) bewertet.</p>
 <p>Durch die Peer-Review haben wir das Feedback bekommen, dass wir für die Multiple Regression die Stepwise Selection nutzen könnten sowie für die Bewertung der Güte der Lasso-Regression den AIC.</p>
 <p>Diese grob beschriebenen Schritte wollen wir im Folgenden detaillierter erklären.</p>
-<section id="lineare-regression" class="level2" data-number="2.1">
+<section id="lineare-regression" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="lineare-regression"><span class="header-section-number">2.1</span> Lineare Regression</h2>
 <section id="modell-auswahl" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="modell-auswahl"><span class="header-section-number">2.1.1</span> Modell-Auswahl</h3>
@@ -3617,102 +3617,102 @@ Korrelationen
 <span id="cb11-3"><a href="#cb11-3"></a>reg_sin <span class="op">=</span> LinearRegression() <span class="co">#für Singlequote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="training-validation" class="level3" data-number="2.1.2">
+<section id="training-validation" class="level3 page-columns page-full" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="training-validation"><span class="header-section-number">2.1.2</span> Training &amp; Validation</h3>
 <p>Im nächsten Schritt werden die Modelle trainiert und validiert. Dies wird mit der Cross-Validation durchgeführt. Hierbei berechnen wir für jedes Modell den Mean-Squared-Error für je 5 Folds. Hierfür nehmen wir die Funktion <code>cross_val_score</code> und visualisieren das zum einen in einer Tabelle und zum anderen als Liniendiagramm. Hierbei sehen wir, dass die Mean-Squared-Erros je Fold voneinander abweichen, grundsätzlich ist der MSE für die Christenqutote aber immer am geringsten, weshalb wir uns im Rahmen der linearen Regression auf die Christenquote konzentrieren.</p>
-<div class="cell">
-<div class="cell-output cell-output-display" data-execution_count="59">
+<div class="cell page-columns page-full" data-execution_count="77">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output cell-output-display" data-execution_count="77">
 
 <style type="text/css">
-#T_38ed6_row0_col0 {
+#T_70311_row0_col0 {
 background-color: #1c6bb0;
 color: #f1f1f1;
 }
-#T_38ed6_row0_col1 {
+#T_70311_row0_col1 {
 background-color: #eef5fc;
 color: #000000;
 }
-#T_38ed6_row0_col2 {
+#T_70311_row0_col2 {
 background-color: #5ca4d0;
 color: #f1f1f1;
 }
-#T_38ed6_row1_col0 {
+#T_70311_row1_col0 {
 background-color: #1c6ab0;
 color: #f1f1f1;
 }
-#T_38ed6_row1_col1, #T_38ed6_row3_col0, #T_38ed6_row3_col2 {
+#T_70311_row1_col1, #T_70311_row3_col0, #T_70311_row3_col2 {
 background-color: #08306b;
 color: #f1f1f1;
 }
-#T_38ed6_row1_col2 {
+#T_70311_row1_col2 {
 background-color: #1d6cb1;
 color: #f1f1f1;
 }
-#T_38ed6_row2_col0, #T_38ed6_row2_col1, #T_38ed6_row2_col2 {
+#T_70311_row2_col0, #T_70311_row2_col1, #T_70311_row2_col2 {
 background-color: #f7fbff;
 color: #000000;
 }
-#T_38ed6_row3_col1 {
+#T_70311_row3_col1 {
 background-color: #5fa6d1;
 color: #f1f1f1;
 }
-#T_38ed6_row4_col0 {
+#T_70311_row4_col0 {
 background-color: #65aad4;
 color: #f1f1f1;
 }
-#T_38ed6_row4_col1 {
+#T_70311_row4_col1 {
 background-color: #084f99;
 color: #f1f1f1;
 }
-#T_38ed6_row4_col2 {
+#T_70311_row4_col2 {
 background-color: #2979b9;
 color: #f1f1f1;
 }
 </style>
-<table id="T_38ed6">
+<table id="T_70311">
   <thead>
     <tr>
       <th class="blank level0"> </th>
-      <th id="T_38ed6_level0_col0" class="col_heading level0 col0">lr_mig</th>
-      <th id="T_38ed6_level0_col1" class="col_heading level0 col1">lr_chr</th>
-      <th id="T_38ed6_level0_col2" class="col_heading level0 col2">lr_sin</th>
+      <th id="T_70311_level0_col0" class="col_heading level0 col0">lr_mig</th>
+      <th id="T_70311_level0_col1" class="col_heading level0 col1">lr_chr</th>
+      <th id="T_70311_level0_col2" class="col_heading level0 col2">lr_sin</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_38ed6_level0_row0" class="row_heading level0 row0">1</th>
-      <td id="T_38ed6_row0_col0" class="data row0 col0">4.195897</td>
-      <td id="T_38ed6_row0_col1" class="data row0 col1">2.222005</td>
-      <td id="T_38ed6_row0_col2" class="data row0 col2">3.502820</td>
+      <th id="T_70311_level0_row0" class="row_heading level0 row0">1</th>
+      <td id="T_70311_row0_col0" class="data row0 col0">4.195897</td>
+      <td id="T_70311_row0_col1" class="data row0 col1">2.222005</td>
+      <td id="T_70311_row0_col2" class="data row0 col2">3.502820</td>
     </tr>
     <tr>
-      <th id="T_38ed6_level0_row1" class="row_heading level0 row1">2</th>
-      <td id="T_38ed6_row1_col0" class="data row1 col0">4.199023</td>
-      <td id="T_38ed6_row1_col1" class="data row1 col1">2.844424</td>
-      <td id="T_38ed6_row1_col2" class="data row1 col2">3.770871</td>
+      <th id="T_70311_level0_row1" class="row_heading level0 row1">2</th>
+      <td id="T_70311_row1_col0" class="data row1 col0">4.199023</td>
+      <td id="T_70311_row1_col1" class="data row1 col1">2.844424</td>
+      <td id="T_70311_row1_col2" class="data row1 col2">3.770871</td>
     </tr>
     <tr>
-      <th id="T_38ed6_level0_row2" class="row_heading level0 row2">3</th>
-      <td id="T_38ed6_row2_col0" class="data row2 col0">3.451805</td>
-      <td id="T_38ed6_row2_col1" class="data row2 col1">2.189314</td>
-      <td id="T_38ed6_row2_col2" class="data row2 col2">2.852882</td>
+      <th id="T_70311_level0_row2" class="row_heading level0 row2">3</th>
+      <td id="T_70311_row2_col0" class="data row2 col0">3.451805</td>
+      <td id="T_70311_row2_col1" class="data row2 col1">2.189314</td>
+      <td id="T_70311_row2_col2" class="data row2 col2">2.852882</td>
     </tr>
     <tr>
-      <th id="T_38ed6_level0_row3" class="row_heading level0 row3">4</th>
-      <td id="T_38ed6_row3_col0" class="data row3 col0">4.414557</td>
-      <td id="T_38ed6_row3_col1" class="data row3 col1">2.539975</td>
-      <td id="T_38ed6_row3_col2" class="data row3 col2">4.048354</td>
+      <th id="T_70311_level0_row3" class="row_heading level0 row3">4</th>
+      <td id="T_70311_row3_col0" class="data row3 col0">4.414557</td>
+      <td id="T_70311_row3_col1" class="data row3 col1">2.539975</td>
+      <td id="T_70311_row3_col2" class="data row3 col2">4.048354</td>
     </tr>
     <tr>
-      <th id="T_38ed6_level0_row4" class="row_heading level0 row4">5</th>
-      <td id="T_38ed6_row4_col0" class="data row4 col0">3.951385</td>
-      <td id="T_38ed6_row4_col1" class="data row4 col1">2.765169</td>
-      <td id="T_38ed6_row4_col2" class="data row4 col2">3.716738</td>
+      <th id="T_70311_level0_row4" class="row_heading level0 row4">5</th>
+      <td id="T_70311_row4_col0" class="data row4 col0">3.951385</td>
+      <td id="T_70311_row4_col1" class="data row4 col1">2.765169</td>
+      <td id="T_70311_row4_col2" class="data row4 col2">3.716738</td>
     </tr>
   </tbody>
 </table>
-</div>
-</div>
+</div></div></div>
 <p>Code Beispiel 42 - Vergleiche Cross Validation Erklärung</p>
 <div class="cell" data-execution_count="71">
 <div class="cell-output cell-output-display" data-execution_count="71">
